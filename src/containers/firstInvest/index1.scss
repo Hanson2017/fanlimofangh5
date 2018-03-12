@@ -1,0 +1,23 @@
+.investTabBar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    .tabBarContainer{
+        width: 60%;
+    }
+}
+.invest-list{
+    margin: 1.28rem 0 1.2rem;
+    .am-list-body{
+        background-color: transparent;
+        border: none;
+    }
+   
+}

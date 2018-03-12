@@ -1,0 +1,35 @@
+.searchListContainer{
+    padding-top: 1.24rem;
+    .searchList{
+        padding: 0;
+        margin: 0;
+    }
+    li{
+        background-color: #fff;
+        padding-left:0.4rem; 
+        list-style: none;
+        height: 0.88rem;
+        line-height: 0.88rem;
+        border-bottom: 1px solid #e1e6eb;
+        .link{
+            display: block;
+            width: 100%;
+            height: 100%;
+            font-size: 0.26rem;
+            color: #333;
+            .platname{
+                display: inline-block;
+                min-width: 1.8rem;    
+            }
+            .state{
+                color: #999;
+            }
+        }
+    }
+    .null{
+        display: block;
+        color: #999;
+        padding: 0.4rem;
+        font-size: 0.28rem;
+    }
+}

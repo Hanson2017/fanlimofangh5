@@ -1,0 +1,20 @@
+
+.homeSearchBar{
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    padding-left: 0.15rem;
+    width: 90%;
+    height: 0.61rem;
+    background-color: #fff;
+    border-radius: 0.08rem;
+    color:#ccc;
+    font-size:0.26rem;
+    span{
+        padding-left: 0.1rem;
+    }
+    .am-icon-search{
+        width: 0.34rem;
+        height: 0.34rem;
+    }
+}

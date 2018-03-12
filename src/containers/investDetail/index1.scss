@@ -1,0 +1,36 @@
+.detailBody{
+    padding: 0.92rem 0;
+}
+.detailBox{
+    padding: 0.24rem;
+    background-color: #fff;
+    border-top: 1px solid #e4e4e4;
+    border-bottom: 1px solid #e4e4e4;
+    .title{
+        margin: 0;
+        color: #666;
+        font-size: 0.26rem;
+    }
+    .ddView{
+        margin-top: 0.16rem;
+        color: #999;
+        font-size: 0.24rem;
+        line-height: 1.8;
+        img{
+            width: 100%;
+            height: auto;
+        }
+    }
+}
+.mt10{
+    margin-top:0.2rem; 
+}
+.moreComment {
+    display: block;
+    margin: 0.1rem 0;
+    height: 0.5rem;
+    line-height: 0.5rem;
+    text-align: center;
+    font-size: 0.3rem;
+    color: #34a0e7; 
+}

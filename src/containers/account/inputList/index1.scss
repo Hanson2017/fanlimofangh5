@@ -1,0 +1,46 @@
+.inputList{
+    padding-left: 0.2rem;
+    display: flex;
+    align-items: center;
+    height: 0.92rem;
+    .labelText{
+        width: 1.6rem;
+        color: #999;
+        font-size: 0.26rem;
+    }
+    .text{
+        padding: 0;
+        margin: 0 0.2rem;
+        height: 0.4rem;
+        line-height: 0.4rem;
+        flex: 1;
+        border: none;
+        color: #666;
+        font-size: 0.26rem;
+    }
+    input::-webkit-input-placeholder { /* WebKit browsers */ 
+
+    color: #ccc; 
+    font-size: 0.26rem;
+    } 
+    input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */ 
+
+    color: #ccc; 
+    font-size: 0.26rem;
+    } 
+    
+    input::-moz-placeholder { /* Mozilla Firefox 19+ */ 
+    
+    color: #ccc; 
+    font-size: 0.26rem;
+    } 
+    
+    input:-ms-input-placeholder { /* Internet Explorer 10+ */ 
+    
+    color: #ccc; 
+    font-size: 0.26rem;
+    } 
+}
+.inputListBt{
+    border-bottom: 1px solid #f2f2f2;
+}

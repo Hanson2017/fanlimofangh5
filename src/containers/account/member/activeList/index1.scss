@@ -1,0 +1,108 @@
+.memberActiveList{
+    background-color: #fff;
+    .item{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        span{
+            flex: none;
+            color: #999;
+            font-size: 0.26rem;
+        }
+        .ic1{
+            padding-left: 0.2rem;
+            width: 1.9rem;
+        }
+        .ic2{
+            width: 1.2rem;
+        }
+        .ic3{
+            width: 1.5rem;
+        }
+        .ic4{
+           flex: 1;
+        }
+        .darkgreen{
+            color: darkgreen;
+        }
+        .red{
+            color: red;
+        }
+    }
+    .c666{
+        color: #666 !important;
+    }
+    dl{
+        margin: 0;
+        padding: 0;
+    }
+    dd,dt{
+      padding: 0;
+      margin: 0;   
+    }
+    dt{
+        display: flex;
+        height: 0.88rem;
+        align-items: center;
+        border-bottom: 1px solid #f2f2f2;
+    }
+    dd{
+        padding: 0.3rem 0;
+        border-bottom: 1px solid #f2f2f2;
+        .hd{
+            padding-bottom: 0.2rem;
+            .link{
+                color:cornflowerblue;
+            }
+            .del{
+                margin-left:0.4rem; 
+            }
+        }
+        .bd{
+            margin: 0;
+            padding: 0 0.1rem 0 0.2rem ;
+            flex-wrap: wrap;
+            display: flex;
+            flex-direction: row;
+            list-style: none;
+           
+            font-size: 0.24rem;
+            color: #666;
+            li{
+                position: relative;
+                margin: 0;
+                padding: 0;
+                padding-left: 1.3rem;
+                box-sizing: border-box;
+                flex:none;
+                width: 50%;
+                line-height: 0.48rem;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                label{
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    color: #999;
+                }
+            }
+            .w100{
+                width: 100%;
+            }
+        }
+        .note{
+            color: #999;
+            font-size: 0.24rem;
+            line-height: 1.6;
+            padding: 0.1rem 0.2rem 0 0.2rem;
+            margin: 0;
+        }
+    }
+    .am-list-body{
+        border: none;
+    }
+    .loadmore{
+        margin-top:0.2rem; 
+    }
+}

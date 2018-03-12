@@ -1,0 +1,42 @@
+.newUserContainer{
+    margin: 1.28rem 0 1.2rem 0;
+    padding: 0.3rem;
+    overflow: hidden;
+    background-color: #fff;
+    h5,h6{
+        margin: 0;
+        padding: 0;
+        font-weight: bold;
+        color: #000;
+        line-height: 1.6;
+    }
+    h6{
+        font-size: 0.28rem;
+    }
+    h5{
+        font-size: 0.32rem;
+    }
+    p{
+        margin: 0.1rem 0;
+        padding: 0;
+        color: #666;
+        font-size: 0.26rem;
+        line-height: 1.8;
+    }
+    b{
+        font-weight: bold;
+        color: #333;
+    }
+    img{
+        width: 100%;
+        height: auto;
+    }
+    .red{
+        color: red;
+    }
+    .mz{
+        padding-top: 0.2rem;
+        margin-top: 0.2rem;
+        border-top: 1px solid #f2f2f2;
+    }
+}

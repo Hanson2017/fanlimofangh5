@@ -1,0 +1,45 @@
+.loginContainer{
+    height: 100%;
+    background-color: #fff;
+    .logo{
+        padding-top: 0.8rem;
+        text-align: center;
+        width: 100%;
+        height: auto;
+        img{
+            width: 3.56rem;
+            height: 1rem;
+        }
+    }
+    .con{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 1.2rem 0 1.8rem 0;
+        overflow: hidden;
+        .am-icon-lg {
+            width: 1.2rem;
+            height: 1.2rem;
+        }
+        .wechat{
+            padding-left: 1.2rem;
+        }
+    }
+    .other{
+        text-align: center;
+        a{
+            color: #999;
+            font-size: 0.32rem;
+        }
+    }
+}
+.formContainer {
+    margin: 0 0.2rem;
+    background-color: #fff;
+    border: 0.01rem solid #ddd;
+    border-radius: 0.08rem; 
+}
+  
+.submitContainer {
+    margin: 0.4rem 0.2rem 0 0.2rem; 
+}

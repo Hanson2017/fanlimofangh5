@@ -1,0 +1,100 @@
+.plansList{
+    margin: 0;
+    .red{
+        color: red;
+    }
+    dt{
+        background-color: #fff;
+        height: 0.8rem;
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid #e4e4e4;
+    }
+    dt,dd{
+        background-color: #fff;
+    }
+    .item{
+        display: flex;
+        flex-direction: row;
+        span{
+            font-size: 0.24rem;
+            color: #666;
+            line-height: 0.8rem;
+        }
+        .ic1{
+            padding-left: 0.2rem;
+            width: 0.7rem;
+        }
+        .ic2{
+            width: 1.56rem;
+        }
+        .ic3{
+            width: 1.76rem;
+        }
+        .ic4{
+            width: 1.28rem;
+        }
+        .ic5{
+            width: 1.04rem;
+        }
+        .red{
+            color: red;
+        }
+    }
+    dd{
+        padding: 0;
+        margin: 0 0 0.2rem 0;
+        background-color: #fff;
+        .more{
+            border-top: 1px solid #f2f2f2;
+            width: 100%;
+            height: 0.92rem;
+            line-height: 0.92rem;
+            text-align: center;
+            color: #999;
+            font-size: 0.24rem;
+            background-color:#fff;
+        }
+        .content{
+            padding: 0 0.4rem 0.4rem 0.4rem;
+            .hd{
+                margin: 0 0 0.2rem 0;
+                height: 0.68rem;
+                line-height: 0.68rem;
+                text-align: center;
+                border-bottom: 1px solid #f2f2f2;
+                font-size: 0.28rem;
+                color: #666;
+                font-weight: normal;
+                .num{
+                    padding-left: 0.2rem;
+                }
+            }
+            .bd{
+                font-size: 0.24rem;
+                line-height: 0.48rem;
+                color: #666;
+                p{
+                    padding: 0;
+                    margin: 0;
+                }
+            }
+            ul{
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                li{
+                   display: flex;
+                   label{
+                       width: 1.2rem;
+                   }
+                }
+            }
+            .special{
+                padding-top: 0.2rem;
+                margin-top: 0.2rem;
+                border-top:1px solid #f2f2f2;
+            }
+        }
+    }
+}

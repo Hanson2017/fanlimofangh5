@@ -1,0 +1,40 @@
+.navBarContainer{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content:space-between;
+    width: 100%;
+    height: 1rem;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    .title,.back,.operation{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .title{
+        color: #333;
+        font-size: 0.32rem;
+        flex: 1;
+    }
+    .back,.operation{
+        width: 1rem;
+        height: 1rem;
+    }
+    .am-icon-md{
+        width: 0.48rem;
+        height: 0.48rem;
+    }
+    .am-icon-md {
+        width: 0.48rem;
+        height: 0.48rem; 
+    }
+    .add {
+        color: green;
+        font-size: 0.3rem; 
+    }
+}

@@ -1,0 +1,130 @@
+.commentsForm{
+    padding: 0;
+    margin: 0;
+    li{
+        margin-bottom: 0.26rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        label{
+            width: 1.6rem;
+            font-size: 0.28rem;
+            color: #999;
+        }
+        .text{
+           padding: 0.16rem 0;
+            width: 4.4rem;
+            height: 0.32rem;
+            text-indent: 0.2rem;
+            border: 1px solid #ccc;
+            color: #666;
+            font-size: 0.26rem;
+        }
+    }
+}
+
+.commentsSubmit{
+    padding-top: 0.3rem;
+    margin-top: 0.3rem;
+    border-top: 1px solid #f2f2f2;
+    .submit{
+        width: 3rem;
+        height: 0.84rem;
+        line-height: 0.84rem;
+        text-align: center;
+        border-radius: 0.08rem;
+        border: none;
+        background-color: #0099cc;
+        color: #fff;
+        font-size: 0.32rem;
+    }
+    .disabled {
+        background-color: #ccc; 
+    }
+}
+.investPic{
+    display: flex;
+    flex-direction: row;
+    .text{
+        margin: 0;
+        padding: 0;
+        font-size: 0.28rem;
+        color: #999;
+    }
+    .pic{
+        width: 2.32rem;
+        height: 1.68rem;
+        border: 1px solid #f2f2f2;
+        margin: 0.2rem 0;
+        img{
+            width:100%;
+            height: 100%;
+        }
+    }
+    .shili{
+        margin-left: 0.5rem;
+    }
+    .uploadwp{
+        position: relative;
+        width: 1.8rem;
+        height: 0.6rem;
+    }
+    .upload{
+        width: 1.8rem;
+        height: 0.6rem;
+        line-height: 0.6rem;
+        text-align: center;
+        border: none;
+        border-radius: 0.08rem;
+        background-color: #b3b0b0;
+        color: #fff;
+        font-size: 0.28rem;
+    }
+    .file{
+        position: absolute;
+        left: 0;
+        right: 0;
+        width: 1.8rem;
+        height: 0.6rem;
+        font-size: 0;
+        opacity: 0;
+    }
+}
+.bigimg-cover {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999; 
+    img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+  .commentsFormFill {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin: 0 0 0.2rem 0;
+    padding-left: 1.6rem;
+    line-height: 0.52rem;
+    min-height: 0.52rem;
+    font-size: 0.28rem;
+    color: #34a0e7; 
+    dt {
+        position: absolute;
+        top: 0;
+        left: 0; 
+    }
+    dd {
+        padding: 0;
+        margin: 0 0.6rem 0 0; 
+    }
+}

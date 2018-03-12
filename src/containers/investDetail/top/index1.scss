@@ -1,0 +1,45 @@
+.detailBody{
+    .top{   
+        padding: 0.25rem;
+        overflow: hidden;
+        background-color: #fff;
+        .tags{
+            display: flex;
+            flex-direction: row;
+            flex-wrap:wrap;
+            .type{
+                display: flex;
+                flex-direction: row;
+            }
+            .tag{
+                margin-bottom: 0.2rem;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+                padding: 0 0.08rem;
+                margin-right: 0.16rem;
+                border: 1px solid #FF6666;
+                border-radius: 0.04rem;
+                height: 0.5rem;
+                min-width: 1.3rem;
+                font-size: 0.24rem;
+                color: #FF6666;
+           }
+        }
+    }
+    .bt{
+        margin-top: 0.1rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content:space-between;
+        font-size: 0.24rem;
+        color: #999;
+        i{
+            font-style: normal;
+            padding-left: 0.1rem;
+        }
+    }
+    
+}
