@@ -9,7 +9,7 @@ const alertShow = Modal.alert;
 
 export default class Account extends React.Component {
     render() {
-        var QQUrl = encodeURI("https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=101346676&redirect_uri=http://test.fanlimofang.com/member/login/qqlogin&state=flmf");
+        var QQUrl = encodeURI("https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=101346676&redirect_uri=http://m.fanlimofang.com/member/login/qqlogin&state=flmf");
         return (
             <div className='container' style={{ height: height }}>
                 <NavBar title={'用户登录'} back={'null'} />

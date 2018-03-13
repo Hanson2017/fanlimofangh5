@@ -1,4 +1,4 @@
-'use strict';
+
 import { Toast } from 'antd-mobile';
 
 // 不为空验证
@@ -22,36 +22,29 @@ function confirmPassword(newVal, confirmPassword, prompt) {
     }
 }
 
-
-
 // 手机格式验证
 function phoneValid(val, text) {
-    let reg = /^1[2|3|4|5|6|7|8|9]\d{9}$/;  //手机正则
+    var reg = /^1[2|3|4|5|6|7|8|9]\d{9}$/; //手机正则
 
-    const textT = text ? text : '';
+    var textT = text ? text : '';
     if (val == '') {
         Toast.fail(textT + '手机号不能为空', 2);
         return false;
-    }
-    else if (val.length !== 11) {
+    } else if (val.length !== 11) {
         Toast.fail(textT + '手机号位数为11', 2);
         return false;
-    }
-    else if (!reg.test(val)) {
+    } else if (!reg.test(val)) {
         Toast.fail(textT + '手机号格式不正确', 2);
         return false;
     }
-
-
 }
 
 function emailVaild(val) {
-    let reg = /^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/;
+    var reg = /^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/;
     if (val == '') {
         Toast.fail('邮箱不能为空', 1);
         return false;
-    }
-    else if (!reg.test(val)) {
+    } else if (!reg.test(val)) {
         Toast.fail('邮箱格式不正确', 1);
         return false;
     }
@@ -63,5 +56,4 @@ module.exports = {
     emailVaild: emailVaild,
     lengthValid: lengthValid,
     confirmPassword: confirmPassword
-}
-
+};
