@@ -33,7 +33,7 @@ export default class InvestDate extends Component {
                     this.setState({ value: v })
                 }}
             >
-                <CustomChildren>投资日期</CustomChildren>
+                <CustomChildren>出借日期</CustomChildren>
             </DatePicker>
         )
     }

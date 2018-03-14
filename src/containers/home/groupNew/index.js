@@ -13,7 +13,7 @@ class Item extends Component {
             <Link to={'/Activity/Detail/' + activity.id} className='link'>
                 <div className='head'><img src={uri} className='logo' /></div>
                 <div className='body'>
-                    <p>投{activity.invest}获<span className='red'>{activity.rebate}</span></p>
+                    <p>出借{activity.invest}获<span className='red'>{activity.rebate}</span></p>
                     <p>相当于年化
                     <span className='red'>
                             {

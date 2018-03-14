@@ -40,8 +40,8 @@ export default class Home extends React.Component {
                     </div>
                     <NavList history={history} />
                     <GroupNew title={'最新上线活动'} data={this.state.dataSourceNew} />
-                    <Group title={'热门首投活动'} data={this.state.dataSourceFirst} />
-                    <Group title={'热门复投活动'} data={this.state.dataSourceRepeat} />
+                    <Group title={'热门首次出借活动'} data={this.state.dataSourceFirst} />
+                    <Group title={'热门多次出借活动'} data={this.state.dataSourceRepeat} />
                 </div>
             )
         }

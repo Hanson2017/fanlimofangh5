@@ -17,7 +17,7 @@ export default class SearchList extends React.Component {
                                         <li key={i}>
                                             <Link to={url} className='link'>
                                                 <span className='platname'>{item.platname}</span>
-                                                <span className='state'>（{item.isrepeat === 0 ? '首投' : '复投'}）</span>
+                                                <span className='state'>（{item.isrepeat === 0 ? '首次出借' : '多次出借'}）</span>
                                             </Link>
                                         </li>
                                     )

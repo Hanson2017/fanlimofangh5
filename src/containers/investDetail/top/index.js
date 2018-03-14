@@ -10,7 +10,7 @@ export default class Top extends React.Component {
         return (
             <div className='top'>
                 <div className='tags'>
-                    <span className='tag'>{activity.isrepeat == 0 ? '首投' : '复投'}活动</span>
+                    <span className='tag'>{activity.isrepeat == 0 ? '首次出借' : '多次出借'}</span>
 
                     {
                         activity.ishighest == 1 ?

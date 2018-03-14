@@ -29,7 +29,7 @@ export default class InvestPic extends Component {
                         null
                 }
                 <div>
-                    <p className='text'>投资截图</p>
+                    <p className='text'>出借截图</p>
                     <div className='pic' onClick={() => {
                         if (this.state.uri !== '') {
                             this.setState({

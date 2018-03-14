@@ -33,8 +33,8 @@ class MainTabBar extends React.Component {
                     <Route path="/" component={Home} />
                 </TabBar.Item>
                 <TabBar.Item
-                    title="首投"
-                    key="首投"
+                    title="首次"
+                    key="首次"
                     icon={<Icon type={require('../../assets/icons/firstInv.svg')} />}
                     selectedIcon={<Icon type={require('../../assets/icons/firstInv.svg')} />}
                     selected={pathname === '/firstInvest'}
@@ -45,8 +45,8 @@ class MainTabBar extends React.Component {
                     <Route path="/firstInvest" component={FirstInvest} />
                 </TabBar.Item>
                 <TabBar.Item
-                    title="复投"
-                    key="复投"
+                    title="多次"
+                    key="多次"
                     icon={<Icon type={require('../../assets/icons/repeatInv.svg')} />}
                     selectedIcon={<Icon type={require('../../assets/icons/repeatInv.svg')} />}
                     selected={pathname === '/repeatInvest'}

@@ -19,9 +19,9 @@ class Item extends Component {
                     <span className='ic1 c666'>{data.plat.platname}</span>
                     <span className='ic2 c666'>
                         {data.activity.isrepeat === 0 ?
-                            '首投'
+                            '首次出借'
                             :
-                            '复投'
+                            '多次出借'
                         }
                     </span>
                     <span className={data.comment.status === 0 ? 'ic3' : data.comment.status === 1 ? 'ic4 darkgreen' : 'ic4 red'}>
@@ -84,13 +84,13 @@ class Item extends Component {
                             null
                     }
                     <li>
-                        <label>投资方案</label>
+                        <label>出借方案</label>
                         第{data.comment.periodnumber}期,方案{data.comment.plannumber}
                     </li>
                     {
                         comment_field.indexOf('investdate') >= 0 ?
                             <li>
-                                <label>投资日期</label>
+                                <label>出借日期</label>
                                 {Util.formatDate(data.comment.investdate)}
                             </li>
                             :

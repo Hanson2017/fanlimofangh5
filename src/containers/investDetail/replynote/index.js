@@ -19,10 +19,10 @@ export default class ReplyNote extends React.Component {
         postinfo += '所选择方案，';
 
         if (comment_field.indexOf('investdate') >= 0) {
-            postinfo += '投资日期，';
+            postinfo += '出借日期，';
         }
         if (comment_field.indexOf('img_invest') >= 0) {
-            postinfo += '投资截图，';
+            postinfo += '出借截图，';
         }
         postinfo += '支付宝帐号';
 

@@ -36,15 +36,15 @@ export default class Plans extends React.Component {
         const acinfo = data.acinfo;
         return (
             <div>
-                <Title title={'投资方案'} />
+                <Title title={'出借方案'} />
                 <dl className='plansList'>
                     <dt className='item'>
                         <span className='ic1'>方案</span>
-                        <span className='ic2'>期限</span>
-                        <span className='ic3'>投资项目</span>
+                        <span className='ic2'>服务期限</span>
+                        <span className='ic3'>出借项目</span>
                         <span className='ic4'>充值金额</span>
                         <span className='ic5'>魔方返</span>
-                        <span className='ic6'>总收益</span>
+                        <span className='ic6'>总回报</span>
                     </dt>
                     {
                         plans.map((item, i) => {
@@ -112,10 +112,10 @@ export default class Plans extends React.Component {
                                                 </li>
                                                         <li>
                                                             <label>保障时间:</label>
-                                                            {item.protectday}天（从投资当日起算）
+                                                            {item.protectday}天（从出借当日起算）
                                                 </li>
                                                         <li>
-                                                            <label>投资流程：</label>
+                                                            <label>出借流程：</label>
                                                         </li>
                                                     </ul>
                                                     <div>

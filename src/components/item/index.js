@@ -18,9 +18,9 @@ export default class Item extends React.Component {
                     <div className='tags'>
                         {
                             activity.isrepeat == 0 ?
-                                <span>首投</span>
+                                <span>首次出借</span>
                                 :
-                                <span>复投</span>
+                                <span>多次出借</span>
                         }
                         {
                             activity.keywords != '' ?
@@ -36,7 +36,7 @@ export default class Item extends React.Component {
                 </div>
                 <ul className='body'>
                     <li>
-                        <span>投{activity.invest}获得</span>
+                        <span>出借{activity.invest}获得</span>
                         <span className='bt red'>{activity.rebate}</span>
                     </li>
                     <li>

@@ -82,7 +82,7 @@ export default class Item extends Component {
                     <span>方案：{data.plannumber}(第{data.periodnumber}期)</span>
                     {
                         commentField.indexOf('investdate') >= 0 ?
-                            <span>投资日期：{investdate}</span>
+                            <span>出借日期：{investdate}</span>
                             :
                             null
                     }
