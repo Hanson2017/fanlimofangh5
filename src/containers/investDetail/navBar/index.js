@@ -7,7 +7,14 @@ export default class NavBar extends React.Component {
         const history = this.props.history;
         return (
             <div className='detailHeader'>
-                <div className='back' onClick={() => history.goBack()}>
+                <div className='back' onClick={() => {
+                    if (history.action !== 'POP') {
+                        history.goBack()
+                    }
+                    else {
+                        history.replace('/')
+                    }
+                }}>
                     <Icon type={require('../../../assets/icons/back.svg')} color={'#a9a9a9'} size={'md'} />
                 </div>
                 <div className='logo'>
