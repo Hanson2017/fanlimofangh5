@@ -1,11 +1,11 @@
 .investItem{
     display: block;
     position: relative;
-    padding: 0.3rem 0.2rem;
+    padding: 0.25rem;
     margin-bottom: 0.2rem;
-    height: 2.9rem;
     background-color: #fff;
     .head{
+        position: relative;
        padding-bottom: 0.2rem;
        border-bottom: 1px solid #f2f2f2;
        display: flex;
@@ -35,9 +35,30 @@
                
                 border: 1px solid #FF6666;
                 border-radius: 0.04rem;
-                height: 0.4rem;
-                font-size: 0.24rem;
+                height: 0.26rem;
+                font-size: 0.22rem;
                 color: #FF6666;
+           }
+           .type.first{
+                color: #67cbdb;
+                border-color: #67cbdb;
+            }
+            .type.repeat{
+                color: #FF9900;
+                border-color: #FF9900;
+            }
+       }
+       .countdown{
+           padding-left: 0.15rem;
+           border-left: 1px solid #bcbcbc;
+           position: absolute;
+           right: 0;
+           top: 0;
+           color: #868686;
+           .date{
+               display: block;
+               color: #E61C2C;
+       
            }
        }
     }
@@ -46,30 +67,30 @@
        flex-direction:row;
        align-items: center;
        padding: 0;
+       margin: 0.2rem 0;
        li{
            flex: none;
            list-style: none;
            width: 33%;
            >span{
                display: block;
-               color: #666;
-               font-size: 0.28rem;
+               color: #868686;
+               font-size: 0.24rem;
            }
            .bt{
                margin-top: 0.1rem;
            }
            .red{
-               color: red;
-               font-size: 0.3rem;
+               color: #E55F73;
+               font-size: 0.36rem;
            }
            .num{
-            color: #999;
-            font-size: 0.3rem;
+            color: #666;
+            font-size: 0.36rem;
            }
        }
     }
     .foot{
-        margin-top: 0.3rem;
         padding-top: 0.2rem;
         display: flex;
         flex-direction:row;
@@ -82,17 +103,15 @@
         }
         .tag{
             display: flex;
-            padding: 0 0.06rem;
+            padding: 0 0.08rem;
             margin-right: 0.1rem;
             align-items: center;
-          justify-content: center;
-            border: 1px solid #cdcdcd;
+            justify-content: center;
+            border: 1px solid #c9c9c9;
             border-radius: 0.04rem;
-            height: 0.48rem;
-            min-width:1.04rem; 
+            height: 0.26rem;
             text-align: center;
-            font-size: 0.24rem;
-            color: #ccc;
+            color: #C9C9C9;
         }
     }
     .maskView{
@@ -108,22 +127,36 @@
             top: 0;
             width: 100%;
             height: 100%;
-            opacity: 0.4;
-            background-color: #000;
+            opacity: 0.6;
+            background-color: #fff;
         }
-        .maskText{
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        .maskText,.text{
             position: absolute;
             left: 0;
-            top: 0;
+            top: 1rem;
             z-index: 101;
-            width: 100%;
-            height: 100%;
-            color: #fff;
-            font-size: 0.5rem;
-            
+            width: 2.4rem;
+            height: 1.24rem;
+        }
+        .maskText{
+            background-color: #000;
+            opacity: 0.6;
+        }
+        
+        .text{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-left:0.25rem; 
+            box-sizing: border-box;
+            font-size: 0.3rem;
+            z-index: 102;     
+            color: #fff; 
+            span{
+                display: block;
+                padding-top: 0.1rem;
+                font-size: 0.22rem;
+            }   
         }
     }
 }

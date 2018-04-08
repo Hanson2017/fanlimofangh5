@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { DatePicker, List, Picker,Toast } from 'antd-mobile';
+import { DatePicker, List, Picker, Toast, Modal } from 'antd-mobile';
 
 import Util from '../../../utils/util';
 import Api from '../../../utils/api';
@@ -44,7 +44,7 @@ export default class CommentsForm extends React.Component {
         var userSetInfo = this.state.userSetInfo;
 
         return (
-            <div className='detailBox mt10'>
+            <div className='detailBox CommentFormContainer'>
                 {
                     this.state.loginState ?
                         <dl className='commentsFormFill'>
@@ -72,19 +72,19 @@ export default class CommentsForm extends React.Component {
                 <ul className='commentsForm'>
                     {
                         comment_field.indexOf('c_userid') >= 0 ?
-                            <InputList labelText='注册ID' params={{ value: this.state.userID, type: "text", name: "userID" }} handleChange={this.handleChange} />
+                            <InputList labelText='注册ID' params={{ value: this.state.userID, type: "text", name: "userID", placeholder: '请输入注册ID' }} handleChange={this.handleChange} />
                             :
                             null
                     }
                     {
                         comment_field.indexOf('c_phone') >= 0 ?
-                            <InputList labelText='注册手机号' params={{ value: this.state.userPhone, type: "text", name: "userPhone", maxLength: '11' }} handleChange={this.handleChange} />
+                            <InputList labelText='注册手机号' params={{ value: this.state.userPhone, type: "text", name: "userPhone", maxLength: '11', placeholder: '请输入注册手机号' }} handleChange={this.handleChange} />
                             :
                             null
                     }
                     {
                         comment_field.indexOf('c_username') >= 0 ?
-                            <InputList labelText='真实姓名' params={{ value: this.state.userRealName, type: "text", name: "userRealName" }} handleChange={this.handleChange} />
+                            <InputList labelText='真实姓名' params={{ value: this.state.userRealName, type: "text", name: "userRealName", placeholder: '请输入真实姓名' }} handleChange={this.handleChange} />
                             :
                             null
                     }
@@ -95,23 +95,23 @@ export default class CommentsForm extends React.Component {
                             :
                             null
                     }
-                    <InputList labelText='支付宝账号' params={{ value: this.state.alipayId, type: "text", name: "alipayId" }} handleChange={this.handleChange} />
+
                     {
                         comment_field.indexOf('img_invest') >= 0 ?
                             <InvestPic uri={acinfo.activity.img_invest} that={this} ref={'investPic'} />
                             :
                             null
                     }
-
+                    <InputList labelText='支付宝账号' params={{ value: this.state.alipayId, type: "text", name: "alipayId", placeholder: '请输入收款支付宝账号' }} handleChange={this.handleChange} />
                 </ul>
                 <div className='commentsSubmit'>
                     {
                         this.state.loginState ?
                             <button type='submit' disabled={this.state.disabled ? false : true} className={this.state.disabled ? 'submit' : 'submit disabled'} onClick={this.handleSubmit}>
-                                {this.state.disabled ? '提交' : '正在提交...'}
+                                {this.state.disabled ? '提交回帖' : '正在提交...'}
                             </button>
                             :
-                        <button type="submit" className='submit disabled' disabled={true} >提交(未登录)</button>
+                            <button type="submit" className='submit disabled' disabled={true} >提交(未登录)</button>
                     }
 
                 </div>
@@ -127,6 +127,7 @@ export default class CommentsForm extends React.Component {
         });
     }
     handleSubmit() {
+        var { history } = this.props;
         var that = this;
         var thatt = this.props.that;
         var dataSource = this.state.dataSource;
@@ -237,7 +238,12 @@ export default class CommentsForm extends React.Component {
                     disabled: true
                 });
                 if (response.result == 1) {
-                    Toast.success('回帖成功，可在个人中心查看进度。', 1);
+                    Modal.alert('回帖成功', '可在个人中心查看进度', [
+                        { text: '稍后', onPress: () => console.log('cancel') },
+                        { text: '前往', onPress: () => { history.push('/member/active') } },
+                    ])
+
+                    // Toast.success('回帖成功，可在个人中心查看进度。', 1);
                     that.setState({
                         userID: '',
                         userPhone: '',

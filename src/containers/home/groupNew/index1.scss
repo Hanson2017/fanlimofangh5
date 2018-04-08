@@ -1,41 +1,37 @@
 .itemListNew{
-    margin: 0;
-    padding: 0 2.5%;
+    padding: 0.1rem 0.25rem 0.15rem 0.25rem;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    
+    background: #fff;
+    box-sizing: border-box;
     .link{
         display: block;
-        padding: 0.1rem 0;
         background-color: #fff;
         list-style: none;
         flex: none;
         width: 31.5%;
-        font-size: 0.22rem;
-        color: #666;
+        color: #868686;
+        &:nth-child(2){
+            margin: 0 0.2rem;
+        }
         .head{
-            padding-bottom: 0.1rem;
-            text-align: center;
+            padding: 0.1rem 0;
             .logo{
                 width: 1.4rem;
                 height: 0.56rem;
             }
         }
         .body{
-            margin: 0 0.1rem;
             padding-top: 0.1rem;
             border-top: 1px solid #f2f2f2;
             p{
-                
-                padding: 0;
-                margin: 0;
                 line-height: 0.44rem;
             }
         }
         .red{
-            color: red;
+            color: #E55F73;
         }
     }
 }

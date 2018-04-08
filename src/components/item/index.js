@@ -6,11 +6,16 @@ import Util from '../../utils/util';
 import './index1.scss';
 
 export default class Item extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { seconds: 0 };
+    }
     render() {
         const data = this.props.data;
         const activity = data.activity;
         const plat = data.plat;
         const uri = Api.domain + data.plat.platlogo;
+        const dateDiff = this.props.dateDiff;
         return (
             <Link to={'/Activity/Detail/' + activity.id} className='investItem'>
                 <div className='head'>
@@ -18,9 +23,9 @@ export default class Item extends React.Component {
                     <div className='tags'>
                         {
                             activity.isrepeat == 0 ?
-                                <span>首次出借</span>
+                                <span className={'type first'}>首次出借</span>
                                 :
-                                <span>多次出借</span>
+                                <span className={'type repeat'}>多次出借</span>
                         }
                         {
                             activity.keywords != '' ?
@@ -33,6 +38,17 @@ export default class Item extends React.Component {
                                 null
                         }
                     </div>
+                    {
+                        activity.isend === 1 && activity.status !== 2 ?
+                            <div className='countdown'>
+                                即将结束
+						        <span className="date">
+                                    {Util.countTime(activity.endtime,dateDiff)}
+                                </span>
+                            </div>
+                            :
+                            null
+                    }
                 </div>
                 <ul className='body'>
                     <li>
@@ -64,11 +80,11 @@ export default class Item extends React.Component {
                                     <span className='tag'>风控分:{plat.riskscore}</span>
                                     {
                                         plat.noshowrisk !== 1 ?
-                                        <span className='tag'>{Util.risklevel(plat.risklevel)}</span>
-                                        :
-                                        null
+                                            <span className='tag'>{Util.risklevel(plat.risklevel)}</span>
+                                            :
+                                            null
                                     }
-                                    
+
                                 </div>
                                 :
                                 <span className='tag'>{Util.investType(activity.atype)}</span>
@@ -99,12 +115,32 @@ export default class Item extends React.Component {
                     activity.status == 2 ?
                         <div className='maskView'>
                             <div className='mask'></div>
-                            <div className='maskText'>已结束</div>
+                            <div className='maskText'></div>
+                            <div className='text'>已结束<span>查看历史详情</span></div>
                         </div>
                         :
                         null
                 }
             </Link>
         )
+    }
+    tick() {
+        this.setState((prevState) => ({
+            seconds: prevState.seconds + 1
+        }));
+    }
+    componentDidMount() {
+        var activity = this.props.data.activity;
+        if (activity.isend === 1) {
+            this.interval = setInterval(() => this.tick(), 1000);
+        }
+    }
+
+    componentWillUnmount() {
+        var activity = this.props.data.activity;
+        if (activity.isend === 1) {
+            clearInterval(this.interval);
+        }
+
     }
 }

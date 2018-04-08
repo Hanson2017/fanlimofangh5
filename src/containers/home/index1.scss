@@ -1,22 +1,60 @@
 .homeContainer{
-    padding:1.57rem 0 1rem 0;
+    padding:1.16rem 0 1rem 0;
+    .titleContainer.fixed{      
+        top: 1.16rem;
+    }
 }
+.homeContainerFirst{
+    .titleContainer::before{
+        background-color: #67cbdb;
+    }
+}
+
+.homeContainerRepeat{
+    .titleContainer::before{
+        background-color: #FF9900;
+    }
+}
+
+
 .homeTop{
     position: fixed;
     top: 0;
     left: 0;
     z-index: 999;
-    width: 100%;    
-    padding: 0.2rem 0;
-    background-color: #f23b83;
+    width: 100%;
+    height: 1.16rem;    
+    padding:  0.22rem 0.25rem;
+    box-sizing: border-box;
+    background-color: #363636;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    .logo{
+        width: 21%;
+        img{
+            width: 100%;
+            height: auto;
+        }
+    }
+    .r{
+        width: 74%;
+    }
 }
 .banner{
     background-color: #fff;
     img{
         width: 100%;
         height: auto;
+    }
+}
+.groupFrist{
+    .titleContainer::before{
+        background-color: #67cbdb;
+    }
+}
+.groupRepeat{
+    .titleContainer::before{
+        background-color: #FF9900;
     }
 }

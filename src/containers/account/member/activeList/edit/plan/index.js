@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { Picker } from 'antd-mobile';
 
 const CustomChildren = props => (
-    <div className={'inputList inputListBt'}>
+    <li>
         <label className='labelText'>{props.labelText}</label>
         <span className='text' onClick={props.onClick}>{props.extra}</span>
-    </div>
+    </li>
 );
 
 export default class InvestPlan extends Component {

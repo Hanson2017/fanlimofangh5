@@ -1,44 +1,15 @@
 .memberActiveList{
-    background-color: #fff;
-    .item{
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        span{
-            flex: none;
-            color: #999;
-            font-size: 0.26rem;
-        }
-        .ic1{
-            padding-left: 0.2rem;
-            width: 1.9rem;
-        }
-        .ic2{
-            width: 1.2rem;
-        }
-        .ic3{
-            width: 1.5rem;
-        }
-        .ic4{
-           flex: 1;
-        }
-        .darkgreen{
-            color: darkgreen;
-        }
-        .red{
-            color: red;
-        }
+    font-size: 0.22rem;
+    .list-view-section-body{
+        background-color: #f5f5f9;
     }
-    .c666{
-        color: #666 !important;
+    .am-list-body:after{
+        border: none;
     }
-    dl{
-        margin: 0;
-        padding: 0;
-    }
-    dd,dt{
-      padding: 0;
-      margin: 0;   
+    .null{
+        display: block;
+        padding: 0.25rem;
+        color: #999;
     }
     dt{
         display: flex;
@@ -47,36 +18,82 @@
         border-bottom: 1px solid #f2f2f2;
     }
     dd{
-        padding: 0.3rem 0;
-        border-bottom: 1px solid #f2f2f2;
+        margin-bottom: 0.2rem;
+        padding: 0.25rem;
+        background-color: #fff;
         .hd{
-            padding-bottom: 0.2rem;
-            .link{
-                color:cornflowerblue;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            .platName{
+                width: 2.2rem;
+                .name{
+                    color: #666;
+                    font-size: 0.24rem;
+                }
+                .type{
+                    margin-top: 0.1rem;
+                    display: block;
+                    border: 1px solid  #67CBDB;
+                    width: 1.1rem;
+                    height: 0.3rem;
+                    line-height: 0.3rem;
+                    text-align: center;
+                    
+                    color: #67CBDB;
+                    border-radius: 0.08rem;
+                }
+                .type.repeat{
+                    color: #ff9900;
+                    border-color: #ff9900;
+                }
             }
-            .del{
-                margin-left:0.4rem; 
+            .state{
+                
+                width: 3.2rem;
+                color: #C9C9C9;
+                .dsh{
+                    color: #868686;
+                }
+                .tg{
+                    color: #C9C9C9;
+                }
+                .bh{
+                    color: #E62344;
+                }
             }
+            .state2{
+                width: auto;
+            }
+            .action{
+               
+                .link{
+                    color:#E62344;
+                }
+                .del{
+                    color: #868686;
+                    margin-left:0.3rem; 
+                }
+            }
+           
+            
         }
         .bd{
-            margin: 0;
-            padding: 0 0.1rem 0 0.2rem ;
+            margin-top: 0.1rem;
+            padding: 0.1rem 0 ;
             flex-wrap: wrap;
             display: flex;
             flex-direction: row;
             list-style: none;
            
-            font-size: 0.24rem;
             color: #666;
             li{
                 position: relative;
-                margin: 0;
-                padding: 0;
                 padding-left: 1.3rem;
                 box-sizing: border-box;
                 flex:none;
                 width: 50%;
-                line-height: 0.48rem;
+                line-height: 0.36rem;
                 overflow: hidden;
                 text-overflow: ellipsis;
                 white-space: nowrap;
@@ -92,10 +109,10 @@
             }
         }
         .note{
-            color: #999;
-            font-size: 0.24rem;
+            border-top: 1px solid #f2f2f2;
+            color: #AEAEAE;
             line-height: 1.6;
-            padding: 0.1rem 0.2rem 0 0.2rem;
+            padding-top: 0.12rem;
             margin: 0;
         }
     }

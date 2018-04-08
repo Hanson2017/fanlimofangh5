@@ -10,7 +10,7 @@ export default class Header extends Component {
                     e.preventDefault()
                     history.goBack()
                 }}>
-                    <Icon type={require('../../../../assets/icons/left.svg')} size={'md'} color={'#fff'} />
+                    <Icon type={require('../../../../assets/icons/left.svg')} size={'xxs'} color={'#fff'} />
                 </a>
                 <div className='searchInput' onClick={() => history.goBack()}>
                     <Icon type={require('../../../../assets/icons/search.svg')} size={'xxs'} color={'#999'} />

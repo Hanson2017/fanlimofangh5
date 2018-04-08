@@ -22,7 +22,7 @@ export default class OtherLogin extends Component {
         return (
             <div className='container'>
                 <NavBar title={'用户登录'} history={this.props.history} />
-                <div className='formContainer'>
+                <div className='formContainer mt30'>
                     <InputList iconName={'email'} placeholder={'用户名/邮箱'} handleChange={this.handleChange} params={{ value: this.state.userName, type: "text", name: "userName" }} />
                     <InputList iconName={'password'} placeholder={'密码'} handleChange={this.handleChange} params={{ value: this.state.password, type: "password", name: "password" }} isBorder={'null'} />
                 </div>

@@ -1,9 +1,9 @@
 .carousel{
-    padding-left: 5%;
-    margin-top:.2rem; 
+    margin-top:.1rem; 
+    width: 100%;
+    overflow: hidden;
     .v-item{
         color: #fff;
-        font-size: .24rem;
         overflow: hidden;
     }
 }

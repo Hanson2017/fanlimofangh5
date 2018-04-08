@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { Grid, Icon } from 'antd-mobile';
-
-import './index1.scss'
-
+import './index1.scss';
 const iconList = [
     { title: '大额活动', iconName: 'homeNav-daer', router: '/tabInvest', tabId: 0 },
     { title: '小额活动', iconName: 'homeNav-xiaoer', router: '/tabInvest', tabId: 1 },
@@ -15,7 +13,7 @@ const iconList = [
 ];
 
 const data = iconList.map((item, i) => ({
-    icon: <Icon type={require('../../../assets/icons/' + item.iconName + '.svg')} color={'#FF6666'} size={'md'} />,
+    icon: <Icon type={require('../../../assets/icons/' + item.iconName + '.svg')} color={'#e62344'} size={'md'} />,
     text: item.title,
 }));
 

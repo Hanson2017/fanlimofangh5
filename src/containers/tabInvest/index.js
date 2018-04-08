@@ -3,55 +3,61 @@ import {
     Route,
     Link
 } from 'react-router-dom';
-
+import Util from '../../utils/util';
 import NavBar from '../../components/navBar';
-import TabBar from '../../components/tabBar';
+import TabBar from '../../components/tabs';
 import List from '../listInvest';
 
-import './index1.scss';
+const tabNames = [
+    { title: '大额', type: 'dae' },
+    { title: '小额', type: 'xiaoe' },
+    { title: '高返', type: 'gaofan' },
+    { title: '存管', type: 'cunguan' },
+    { title: '融资', type: 'rongzi' },
+    { title: '国资', type: 'guozi' },
+    { title: '上市', type: 'shangshi' }
+]
 
 export default class TabInvest extends React.Component {
+    constructor() {
+        super()
+        this.state = {
+            fixed: false
+        }
+        this.handleScroll = this.handleScroll.bind(this);
+    }
     componentWillMount() {
         var location = this.props.location;
         this.setState({
-            selectedSegmentIndex: location.state && location.state.tabId ? location.state.tabId : 0
+            tabIndex: location.state && location.state.tabId ? location.state.tabId : 0
         });
     }
     render() {
-        var typeName = 'dae';
 
-        switch (this.state.selectedSegmentIndex) {
-            case 0:
-                typeName = 'dae';
-                break;
-            case 1:
-                typeName = 'xiaoe';
-                break;
-            case 2:
-                typeName = 'gaofan';
-                break;
-            case 3:
-                typeName = 'cunguan';
-                break;
-            case 4:
-                typeName = 'rongzi';
-                break;
-            case 5:
-                typeName = 'guozi';
-                break;
-            case 6:
-                typeName = 'shangshi';
-                break;
-
-        }
         return (
-            <div className='tabInvestContainer'>
+            <div className='tabContainer'>
                 <NavBar title={''} history={this.props.history} />
-                <div className='investTabBar'>
-                    <TabBar that={this} selectedIndex={this.state.selectedSegmentIndex} values={['大额', '小额', '高返', '存管', '融资', '国资', '上市']} />
-                </div>
-                <List tType={'listTag'} type={typeName} />
+               
+                <TabBar current={this.state.tabIndex}  fixed={this.state.fixed}>
+                    {
+                        tabNames.map((item,i)=>{
+                            return(
+                                <List name={item.title} key={i} tType={'listTag'} type={item.type} />
+                            )
+                        })
+                    }
+                    
+                </TabBar>
             </div>
         )
+    }
+    componentDidMount() {
+        window.addEventListener('scroll', this.handleScroll)
+    }
+    handleScroll() {
+        Util.handleScroll(this)
+    }
+    componentWillUnmount() {
+        window.removeEventListener('scroll', this.handleScroll);
     }
 }

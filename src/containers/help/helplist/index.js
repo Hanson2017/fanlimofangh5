@@ -3,10 +3,8 @@ import { ListView } from 'antd-mobile';
 import Api from '../../../utils/api';
 import Util from '../../../utils/util';
 import Loading from '../../../components/loading';
-import TabBar from '../../../components/tabBar';
 import Loadmore from '../../../components/loadmore';
 import './index1.scss';
-
 
 class Item extends Component {
     render() {
@@ -15,13 +13,13 @@ class Item extends Component {
         return (
             <div className='list'>
                 <h6 className='title'>{listNo + ''}.{data.title}</h6>
-                <div className='moreBtn'
+                <div className={that.state.isHidden[index].hidden?'moreBtn':'moreBtn open'}
                     onClick={() => {
                         var isHidden11 = that.state.isHidden;
                         isHidden11[index].hidden = !isHidden11[index].hidden;
                         if (!isHidden11[index].hidden) {
                             isHidden11[index].moreText = '点击收起';
-                        } 
+                        }
                         else {
                             isHidden11[index].moreText = '点击查看详情';
                         }
@@ -65,29 +63,25 @@ export default class HelpList extends React.Component {
     }
     render() {
         const { dataSource, isHidden } = this.state;
-        return (
-            <div className='helpListContainer'>
-                {
-                    this.state.loading ?
-                        <Loading />
+
+        if (this.state.loading) {
+            return <Loading />;
+        }
+        else {
+            return (
+                <div className='helpListContainer'>
+                    {
+                        dataSource.length > 0 ? dataSource.map((item, i) => {
+                            return (
+                                <Item key={i} data={item} isHidden={isHidden[i]} that={this} index={i} />
+                            )
+                        })
                         :
-                        <div className='invest-list'>
-                            {
-                                dataSource.length > 0 ? dataSource.map((item, i) => {
-                                    return (
-                                        <Item key={i} data={item} isHidden={isHidden[i]} that={this} index={i} />
-                                    )
-                                })
-                                    :
-                                    null
-                            }
-
-                        </div>
-
-                }
-
-            </div>
-        )
+                        null
+                    }
+                </div>
+            )
+        }
     }
     componentDidMount() {
         this.getData()

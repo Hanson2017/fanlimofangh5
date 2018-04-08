@@ -1,37 +1,108 @@
 .userSetContainer{
     padding-bottom: 1.2rem;
-    .form{
-        background-color: #fff;
-        .inputList{
-            .labelText{
-                width:3.5rem;
-            }
-        }
+    .header{       
+        height: 0.74rem;
+        border-bottom: 1px solid #f2f2f2;
+        color: #797979;
+        font-size: 0.24rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
     }
     .list{
-        margin-top: 0.2rem;
-        background-color: #fff;
-        .hd{
-            padding: 0 0.2rem;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: center;
-            height: 0.8rem;
-            border-bottom: 1px solid #eee;
-            color: #666;
-            font-size: 0.26rem;
-            .del{
-                display: flex;
-                justify-content:center;
-                align-items: center;
-                color: #666;
-                font-size: 0.26rem;
-                b{
-                    padding-left: 0.1rem;
-                    font-weight: normal;
-                }
-            }
+        display: flex;
+        align-items: center;
+        color: #868686;       
+        label{
+            width: 1.3rem;
+            color: #AEAEAE;
         }
     }
+    .edit{
+        color: #E62344;
+    }
+    .btnContainer{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .cancel,.submit{
+            display: inline-block;
+            width: 3rem;
+            height: 0.6rem;
+            border-radius: 0.12rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+        }
+        .cancel{
+            background-color: #bcbcbc;
+        }
+        .submit{
+            background-color: #e62344;
+        }
+    }
+    .alipayForm{
+        padding: 0 0.25rem;
+        background-color: #fff;
+        overflow: hidden;
+        dl{
+            padding: 0.15rem 0;
+        }
+        .edit{
+            font-size: 0.22rem;
+        }
+        .list{
+            line-height: 0.6rem;
+        }
+        .commentsForm{
+            margin-top: 0.3rem;
+        }
+        .btnContainer{
+            padding: 0.15rem 0 0.25rem 0;
+        }
+    }
+    .infoList{
+        padding: 0 0.25rem;
+        background-color: #fff;
+        .add{
+            color: #E62344;
+            font-size: 0.24rem;
+        }
+        .hd{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.2rem 0;
+            .tit{
+                color: #797979;
+                font-size: 0.24rem;
+            }
+            .del{
+                color: #868686;
+            } 
+            .edit{
+               padding-right: 0.3rem;
+            }
+           
+        }        
+        dl{
+            padding-bottom: 0.2rem;
+            border-bottom: 1px solid #f2f2f2;
+            
+        }
+        
+        .list{
+            line-height: 0.44rem;
+        }
+        .addformList{
+            padding: 0.25rem 0;
+            border-bottom: 1px solid #f2f2f2;
+        }
+        .null{
+            color: #999;
+            padding: 0.25rem 0;
+        }
+    } 
+
 }

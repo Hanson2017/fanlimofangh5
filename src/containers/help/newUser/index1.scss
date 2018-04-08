@@ -1,42 +1,64 @@
 .newUserContainer{
-    margin: 1.28rem 0 1.2rem 0;
-    padding: 0.3rem;
+    margin: 0 0 1.2rem 0;
     overflow: hidden;
-    background-color: #fff;
-    h5,h6{
-        margin: 0;
-        padding: 0;
-        font-weight: bold;
-        color: #000;
-        line-height: 1.6;
+    .titleContainer.fixed{      
+        top: 1.61rem;
     }
-    h6{
-        font-size: 0.28rem;
+    .box{
+        padding: 0.25rem 0.25rem 0.2rem 0.25rem;
+        background-color: #fff;
+        .title{
+            margin-bottom: 0.2rem;
+            padding-bottom: 0.2rem;
+            color: #666;
+            font-size: 0.24rem;
+            border-bottom: 1px solid #f2f2f2;
+        }
+        .content{
+            color: #666;
+            line-height: 1.6;
+            img{
+                border: 1px solid #f2f2f2;
+            }
+        }
+        .bdr{
+            margin-top: 0.3rem;
+            padding-top: 0.3rem;
+            border-top: 1px solid #f2f2f2;
+        }
+        .h5{
+            padding: 0.1rem 0;
+            font-weight: bold;
+            color: #434343;
+        }
+        .h6{
+            padding: 0.1rem 0;
+            font-weight: bold;
+            color: #E62344;
+        }
+        .more{
+            position: relative;
+            display: block;
+            padding: 0.25rem 0;
+            text-align: center;
+            color: #999;
+            &::after{
+                position: absolute;
+                left: 50%;
+                margin-left: -0.2rem;
+                bottom: 0;
+                content: '';
+                display: inline-block;
+                width: 0.4rem;
+                height: 0.04rem;
+                background-color: #c9c9c9;
+            }
+        }
+        .more.open{
+            &::after{
+                background-color: #e62344;
+            }
+        }
     }
-    h5{
-        font-size: 0.32rem;
-    }
-    p{
-        margin: 0.1rem 0;
-        padding: 0;
-        color: #666;
-        font-size: 0.26rem;
-        line-height: 1.8;
-    }
-    b{
-        font-weight: bold;
-        color: #333;
-    }
-    img{
-        width: 100%;
-        height: auto;
-    }
-    .red{
-        color: red;
-    }
-    .mz{
-        padding-top: 0.2rem;
-        margin-top: 0.2rem;
-        border-top: 1px solid #f2f2f2;
-    }
+
 }

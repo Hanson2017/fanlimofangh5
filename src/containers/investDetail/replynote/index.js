@@ -27,9 +27,9 @@ export default class ReplyNote extends React.Component {
         postinfo += '支付宝帐号';
 
         return (
-            <div className='detailBox mt10'>
-                <h6 className='title'>回帖说明：</h6>
+            <div className='detailBox'>                
                 <div className='ddView'>
+                    回帖说明：<br />
                    {postinfo}
                 </div>
             </div>

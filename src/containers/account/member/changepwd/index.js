@@ -23,7 +23,7 @@ export default class ChangePassword extends Component {
         return (
             <div className='container'>
                 <NavBar title={'修改密码'} history={this.props.history} />
-                <div className='formContainer'>
+                <div className='formContainer mt30'>
                     <InputList iconName={'password'} placeholder={'原始密码'} handleChange={this.handleChange} params={{ value: this.state.oldPassword, type: "password", name: "oldPassword" }} />
                     <InputList iconName={'passwordO'} placeholder={'新密码'} handleChange={this.handleChange} params={{ value: this.state.newPassword, type: "password", name: "newPassword" }} />
                     <InputList iconName={'passwordO'} placeholder={'确认新密码'} handleChange={this.handleChange} params={{ value: this.state.confirmPassword, type: "password", name: "confirmPassword" }} isBorder={'null'} />

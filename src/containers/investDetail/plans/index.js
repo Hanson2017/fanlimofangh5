@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Util from '../../../utils/util';
-import Title from '../../../components/title';
+import Title from '../title/';
 import './index1.scss';
 
 
@@ -10,8 +10,10 @@ export default class Plans extends React.Component {
         this.state = {
             isHidden: [],
             ref: false,
-            siteUrl: ''
+            siteUrl: '',
+            fixed: false,
         };
+        
     }
     componentWillMount() {
         const activity = this.props.data.acinfo.activity
@@ -31,25 +33,26 @@ export default class Plans extends React.Component {
         })
     }
     render() {
+
         const data = this.props.data;
         const plans = data.plans;
         const acinfo = data.acinfo;
         return (
             <div>
-                <Title title={'出借方案'} />
-                <dl className='plansList'>
-                    <dt className='item'>
-                        <span className='ic1'>方案</span>
-                        <span className='ic2'>服务期限</span>
-                        <span className='ic3'>出借项目</span>
-                        <span className='ic4'>充值金额</span>
-                        <span className='ic5'>魔方返</span>
-                        <span className='ic6'>总回报</span>
-                    </dt>
-                    {
-                        plans.map((item, i) => {
-                            return (
-                                <dd key={i}>
+                
+                {
+                    plans.map((item, i) => {
+                        return (
+                            <dl className='plansList' key={i}>
+                                <dt className='item'>
+                                    <span className='ic1'>方案</span>
+                                    <span className='ic2'>服务期限</span>
+                                    <span className='ic3'>出借项目</span>
+                                    <span className='ic4'>充值金额</span>
+                                    <span className='ic5'>魔方返利</span>
+                                    <span className='ic6'>总回报</span>
+                                </dt>
+                                <dd>
                                     <div className='item' >
                                         <span className='ic1'>{item.number}</span>
                                         <span className='ic2'>{item.termdescription}</span>
@@ -65,7 +68,7 @@ export default class Plans extends React.Component {
                                             }
                                         </span>
                                     </div>
-                                    <div className='more' onClick={() => {
+                                    <div className={this.state.isHidden[i].hidden ? 'more' : 'more red'} onClick={() => {
                                         const isHidden = this.state.isHidden;
                                         isHidden[i].hidden = !isHidden[i].hidden;
                                         if (!isHidden[i].hidden) {
@@ -88,9 +91,9 @@ export default class Plans extends React.Component {
                                                     <span className='num'>方案{item.number}</span>
                                                 </h6>
                                                 <div className='bd'>
-                                                    <ul>
+                                                    <ul className='t'>
                                                         <li>
-                                                            方案{item.number}换算成年化收益是
+                                                            换算成年化收益率：
                                                     <span className='red'>
                                                                 {
                                                                     acinfo.activity.atype == 1 || acinfo.activity.atype == 4 ?
@@ -109,18 +112,16 @@ export default class Plans extends React.Component {
                                                                     0
                                                             }
                                                             ({item.protectamount + ''}元)
-                                                </li>
+                                                        </li>
                                                         <li>
                                                             <label>保障时间:</label>
                                                             {item.protectday}天（从出借当日起算）
-                                                </li>
-                                                        <li>
-                                                            <label>出借流程：</label>
                                                         </li>
                                                     </ul>
                                                     <div>
+                                                        <p className='tt'><span>出借流程</span></p>
                                                         <p>
-                                                            1、通过<a className='red'  target="_blank" href={this.state.siteUrl}>直达链接</a>
+                                                            1、通过<a className='red' target="_blank" href={this.state.siteUrl}>直达链接</a>
                                                             {
                                                                 acinfo.activity.invitation_code != '' ?
                                                                     <span>
@@ -144,7 +145,7 @@ export default class Plans extends React.Component {
                                                     {
                                                         acinfo.activity.special ?
                                                             <div className='special'>
-                                                                <p>特别说明</p>
+                                                                <p className='tt'><span>特别说明</span></p>
                                                                 <p className='red'>{acinfo.activity.special}</p>
                                                             </div>
                                                             :
@@ -158,13 +159,15 @@ export default class Plans extends React.Component {
                                     }
 
                                 </dd>
-                            )
-                        })
-                    }
+                            </dl>
+                        )
+                    })
+                }
 
-                </dl>
+               
             </div>
         )
     }
+  
 
 }

@@ -1,0 +1,27 @@
+.titleContainerDetail{
+    position: relative;
+    padding: 0.15rem 0;
+    width: 100%;
+    background-color: #fff;
+    color: #515151;
+    font-size: 0.24rem;
+    text-indent: 0.25rem;
+    border-bottom: 1px solid  #f2f2f2;
+    &::before{
+        position: absolute;
+        top: 0.18rem;
+        left: 0;
+        content: "";
+        display: inline-block;
+        width: 0.1rem;
+        height: 0.2rem;
+        background-color: #e62344;
+    }
+}
+.titleContainerDetail.fixed{
+    position: fixed;
+    top: 0.8rem;
+    left: 0;
+    z-index: 101;
+    box-shadow:0 0 0.1rem #ccc;
+}

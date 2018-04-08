@@ -6,15 +6,16 @@ import Title from '../../../components/title';
 
 export default class Group extends Component {
     render() {
-        const data = this.props.data;
+    
+        const {data,type,dateDiff} = this.props;
         return (
-            <div className='group'>
+            <div className={type === 0?'group mt30 groupFrist':'group mt30 groupRepeat'}>
                 <Title title={this.props.title} />
                 <div className='itemList'>
                     {
                         data.map((item, i) => {
                             return (
-                                <Item data={item} key={i} />
+                                <Item dateDiff={dateDiff} data={item} key={i} />
                             )
                         })
                     }

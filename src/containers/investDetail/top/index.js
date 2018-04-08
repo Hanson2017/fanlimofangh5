@@ -9,8 +9,19 @@ export default class Top extends React.Component {
         const plat = data.plat;
         return (
             <div className='top'>
+                 <div className='bt'>
+                    <span className='num'>已参加<b>{data.commentnum }人</b></span>
+                    <span className='keyword'>
+                        关键字:
+                        {
+                            Util.formatSymbol(activity.keywords).map((item,i)=>{
+                                return <i key={i}>{item}</i>;
+                            })
+                        }
+                    </span>
+                </div>
                 <div className='tags'>
-                    <span className='tag'>{activity.isrepeat == 0 ? '首次出借' : '多次出借'}</span>
+                    <span className={activity.isrepeat == 0 ?'tag first':'tag repeat'}>{activity.isrepeat == 0 ? '首次出借' : '多次出借'}</span>
 
                     {
                         activity.ishighest == 1 ?
@@ -49,16 +60,9 @@ export default class Top extends React.Component {
                             null
                     }
                 </div>
-                <div className='bt'>
-                    <span className='num'>已有{data.commentnum }人参加</span>
-                    <span className='keyword'>
-                        关键字:
-                        {
-                            Util.formatSymbol(activity.keywords).map((item,i)=>{
-                                return <i key={i}>{item}</i>;
-                            })
-                        }
-                    </span>
+                <div className='reason'>
+                    <h6>推荐理由：</h6>
+                    <p>{Util.delHtmlTag(activity.reasons)}</p>                    
                 </div>
             </div>
         )

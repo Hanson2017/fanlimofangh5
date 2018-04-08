@@ -1,26 +1,45 @@
 import React, { Component } from 'react';
-import TabBar from '../../components/tabBar';
+import NavBar from '../../components/navBar';
+import TabBar from '../../components/tabs';
 import List from '../listInvest';
+import Util from '../../utils/util';
 
-import './index1.scss';
+const tabNames = [
+    { title: '进行中', type: 'first' },
+    { title: '已结束', type: 'firstover' },
+]
 
 export default class FirstInvest extends React.Component {
-    constructor(props) {
-        super(props);
+    constructor() {
+        super()
         this.state = {
-            selectedSegmentIndex: 0
-        };
+            fixed: false
+        }
+        this.handleScroll = this.handleScroll.bind(this);
     }
     render() {
         return (
-            <div>
-                <div className='investTabBar'>
-                    <TabBar that={this} values={['进行中', '已结束']} />
-                </div>
-                <List type={this.state.selectedSegmentIndex === 0 ? 'first':'firstover'} />
-
+            <div className='tabContainer'>
+                <NavBar title={''} back='null' history={this.props.history} />
+                <TabBar fixed={this.state.fixed}>
+                    {
+                        tabNames.map((item, i) => {
+                            return (
+                                <List name={item.title} key={i} type={item.type} />
+                            )
+                        })
+                    }
+                </TabBar>
             </div>
         )
     }
-   
+    componentDidMount() {
+        window.addEventListener('scroll',this.handleScroll)
+    }
+    handleScroll() {
+        Util.handleScroll(this)
+    }
+    componentWillUnmount() {
+        window.removeEventListener('scroll',this.handleScroll);
+    }
 }

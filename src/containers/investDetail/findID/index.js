@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
-
+import Title from '../title/';
 export default class FindID extends React.Component {
     render() {
         const uri = this.props.uri;
         return (
-            <div className='detailBox mt10'>
-                <h6 className='title'>回帖注册ID从哪儿找？</h6>
-                <div className='ddView'>
+            <div className='mt15'>
+                <Title title={'回帖注册ID从哪儿找？'} />
+                <div className='detailBox'>
                     <img src={uri} />
                 </div>
             </div>
         )
     }
 }
+

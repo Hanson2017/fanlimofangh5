@@ -7,9 +7,9 @@
     flex-direction: row;
     align-items: center;
     width: 100%;
-    height: 0.92rem;
+    height: 0.8rem;
     background-color: #fff;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #f2f2f2;
     .back{
         flex: none;
         width: 1rem;
@@ -26,6 +26,19 @@
         img{
             width: 1.4rem;
             height: 0.56rem;
+        }
+    }
+    .countdown{
+        padding-left: 0.15rem;
+        border-left: 1px solid #bcbcbc;
+        position: absolute;
+        right: 0.25rem;
+        top: 0.13rem;
+        color: #868686;
+        .date{
+            display: block;
+            color: #E61C2C;
+    
         }
     }
 }

@@ -35,7 +35,7 @@ export default class GroupNew extends Component {
     render() {
         const data = this.props.data;
         return (
-            <div className='group'>
+            <div className='group mt30'>
                 <Title title={this.props.title} />
                 <ul className='itemListNew'>
                     {

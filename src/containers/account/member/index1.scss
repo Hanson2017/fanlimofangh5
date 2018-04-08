@@ -1,33 +1,68 @@
 .memberContainer{
-    .hd{
-        padding: 0.4rem 0 0.4rem 0.4rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+    box-sizing: border-box;
+    padding-bottom: 1rem;
+    .nav{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 0.2rem 0 0.4rem;
+        height: 1.2rem;
+        border-bottom: 1px solid #f2f2f2;
+        color: #868686;
+        font-size: 0.24rem;
         background-color: #fff;
+        span{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        b{
+            padding-left: 0.3rem;
+            font-weight: normal;
+        }
+        .am-icon-xxs{
+            width: 0.24rem;
+            height: 0.24rem;
+        }
+    }
+    .hd{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 0.6rem 0 0.3rem 0;
+        background-color: #363636;
         color: #888;
-        font-size: 0.32rem;
+
+        .portrait{
+            width: 1.6rem;
+            height: 1.6rem;
+            border-radius: 50%;
+        }
+        .userName{
+            margin: 0.25rem 0 0.15rem 0;
+            font-size: 0.24rem;
+            color: #fff;
+        }
+        .date{
+            display: block;
+            padding: 0 0.12rem;
+            height: 0.32rem;
+            line-height: 0.32rem;
+            background-color: #e62344;
+            color: #363636;
+            border-radius: 0.08rem;
+        }
     }
     .bd{
-        margin-top: 0.2rem;
         background-color: #fff;
-        .nav{
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 0.2rem 0 0.4rem;
-            height: 1.2rem;
-            border-bottom: 1px solid #f2f2f2;
-            color: #444;
-            font-size: 0.3rem;
-            span{
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-            b{
-                padding-left: 0.3rem;
-                font-weight: normal;
-            }
-        }
+        
     }
     .logoutBtn{
         display: flex;
@@ -35,11 +70,16 @@
         justify-content: center;
         width: 100%;
         height: 1.2rem;
-        color: #444;
-        font-size: 0.3rem;
+        color: #868686;
+        font-size: 0.24rem;
         background-color: #fff;
         border: none;
        margin-top: 0.3rem;
     }
-  
+    .version{
+        height: 0.6rem;
+        line-height: 0.6rem;
+        text-align: center;
+        color: #D7D7D7;
+    }
 }

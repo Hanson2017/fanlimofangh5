@@ -14,54 +14,56 @@ export default class InvestPic extends Component {
         const uri = Api.domain + this.props.uri;
         const { show, bigpicUri } = this.state;
         return (
-            <div className='investPic'>
-                {
-                    show ?
-                        <div className='bigimg-cover' onClick={() => {
-                            this.setState({
-                                show: false,
-                                bigpicUri: ''
-                            });
+            <li className='jietu'>
+                <label>出借截图</label>
+                <div className='investPic'>
+                    {
+                        show ?
+                            <div className='bigimg-cover' onClick={() => {
+                                this.setState({
+                                    show: false,
+                                    bigpicUri: ''
+                                });
+                            }}>
+                                <img src={bigpicUri} />
+                            </div>
+                            :
+                            null
+                    }
+                    <div>
+                        <div className='pic' onClick={() => {
+                            if (this.state.uri !== '') {
+                                this.setState({
+                                    show: true,
+                                    bigpicUri: this.state.uri
+                                });
+                            }
                         }}>
-                            <img src={bigpicUri} />
+                            {
+                                this.state.uri == '' ?
+                                    '等待上传'
+                                    :
+                                    <img src={this.state.uri} />
+                            }
                         </div>
-                        :
-                        null
-                }
-                <div>
-                    <p className='text'>出借截图</p>
-                    <div className='pic' onClick={() => {
-                        if (this.state.uri !== '') {
+                        <div className='uploadwp'>
+                            <button type='submit' className='upload'>本地上传</button>
+                            <input type='file' onChange={this.onChange.bind(this)} className='file' />
+                        </div>
+                    </div>
+                    <div className='shili'>
+                        <div className='pic' onClick={() => {
                             this.setState({
                                 show: true,
-                                bigpicUri: this.state.uri
+                                bigpicUri: uri
                             });
-                        }
-                    }}>
-                        {
-                            this.state.uri == '' ?
-                                <img src={require('../../../../assets/images/uploadimg.jpg')} />
-                                :
-                                <img src={this.state.uri} />
-                        }
-                    </div>
-                    <div className='uploadwp'>
-                        <button type='submit' className='upload'>本地上传</button>
-                        <input type='file' onChange={this.onChange.bind(this)} className='file' />
+                        }}>
+                            <img src={uri} />
+                        </div>
+                        <p>截图示例</p>
                     </div>
                 </div>
-                <div className='shili'>
-                    <p className='text'>示例：</p>
-                    <div className='pic' onClick={() => {
-                        this.setState({
-                            show: true,
-                            bigpicUri: uri
-                        });
-                    }}>
-                        <img src={uri} />
-                    </div>
-                </div>
-            </div>
+            </li>
         )
     }
     onChange(evt) {

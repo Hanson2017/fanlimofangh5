@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Toast } from 'antd-mobile';
+import { Toast, Modal } from 'antd-mobile';
 import NavBar from '../../../../../components/navBar';
 import Util from '../../../../../utils/util';
 import Api from '../../../../../utils/api';
@@ -9,7 +9,7 @@ import InputList from './inputList';
 import PlanList from './plan';
 import DateList from './date';
 import Submit from '../../../../../components/submit';
-
+import './index1.scss';
 export default class Edit extends Component {
     constructor(props) {
         super(props);
@@ -24,7 +24,8 @@ export default class Edit extends Component {
             alipay: '',
             loading: true,
             comment_field: '',
-            id: 0
+            id: 0,
+            modal: false
         };
         this.handleChange = this.handleChange.bind(this)
         this.onSubmit = this.onSubmit.bind(this)
@@ -36,8 +37,11 @@ export default class Edit extends Component {
             id: location.state.id
         })
     }
+
     render() {
+        const { history } = this.props;
         const comment_field = this.state.comment_field;
+        const { comments } = this.state;
         return (
             <div className='container'>
                 <NavBar title={'活动记录修改'} history={this.props.history} />
@@ -45,8 +49,12 @@ export default class Edit extends Component {
                     this.state.loading ?
                         <Loading />
                         :
-                        <div>
-                            <div className='formContainer'>
+                        <div className='activeEdit'>
+                            <div className='hd'>
+                                {comments.platname}
+                                <span className={comments.isrepeat === 0 ?'type':'type repeat'}>{comments.isrepeat === 0 ? '首次出借' : '多次出借'}</span>
+                            </div>
+                            <ul className='commentsForm'>
                                 {
                                     comment_field.indexOf('c_userid') >= 0 ?
                                         <InputList labelText={'注册ID'} handleChange={this.handleChange} params={{ value: this.state.userid, type: "text", name: "userid" }} />
@@ -55,7 +63,7 @@ export default class Edit extends Component {
                                 }
                                 {
                                     comment_field.indexOf('c_phone') >= 0 ?
-                                        <InputList labelText={'注册手机号'} handleChange={this.handleChange} params={{ value: this.state.phone, type: "text", name: "phone" , maxLength: '11' }} />
+                                        <InputList labelText={'注册手机号'} handleChange={this.handleChange} params={{ value: this.state.phone, type: "text", name: "phone", maxLength: '11' }} />
                                         :
                                         null
                                 }
@@ -74,10 +82,21 @@ export default class Edit extends Component {
                                 }
                                 <InputList labelText={'支付宝账号'} handleChange={this.handleChange} params={{ value: this.state.alipay, type: "text", name: "alipay" }} isBorder={'null'} />
 
-                            </div>
-                            <div className='submitContainer' >
-                                <Submit value={'提交修改'} onSubmit={this.onSubmit} />
-                            </div>
+                            </ul>
+                            <button className='submit' onClick={this.onSubmit}>提交修改</button>
+                            <Modal
+
+                                transparent
+                                maskClosable={false}
+                                visible={this.state.modal}
+                                onClose={this.onClose.bind(this, 'modal')}
+                                footer={[{ text: '确定', onPress: () => {  history.replace('/member/active'); this.onClose('modal'); } }]}
+                                platform="ios"
+                            >
+
+                                修改成功
+
+                            </Modal>
                         </div>
 
                 }
@@ -87,6 +106,16 @@ export default class Edit extends Component {
     }
     componentDidMount() {
         this.getData()
+    }
+    onClose(key) {
+        this.setState({
+            [key]: false,
+        });
+    }
+    showModal(key) {
+        this.setState({
+            [key]: true,
+        });
     }
     handleChange(event) {
         const target = event.target;
@@ -165,8 +194,9 @@ export default class Edit extends Component {
             })
             .then(function (response) {
                 if (response.result == 1) {
-                    Toast.success('修改成功', 1)
-                    history.replace('/member/active')
+                    that.showModal('modal');
+                    // Toast.success('修改成功', 1)
+                    // history.replace('/member/active')
                 }
                 else {
                     Toast.fail(response.resultmsg, 1)

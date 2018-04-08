@@ -21,6 +21,9 @@ module.exports = {
     memberModPass: host + 'memberModPass',
     memberSet: host + 'memberSet?memberid=',
     memberModSet: host + 'memberModSet',
+    memberModSet_alipay:host+'memberModSet_alipay', //快捷设置修改支付宝
+    memberModSet_contact:host+'memberModSet_contact', //快捷设置修改设置或添加设置（id  当新增时id=0）
+    memberModSet_contact_del:host+'memberModSet_contact_del', //快捷设置删除（memberid，id）
     memberdelcomment: host + 'memberdelcomment', //删除留言
     getUserinfo: domain + '/member/Login/QQlogin_h5', //QQ,wechat 登录
     getInfoList: host + 'GetInfoList', //常用问答

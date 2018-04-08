@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Api from '../../utils/api';
 import Loading from '../../components/loading';
 import Header from './navBar';
+import Title from './title/';
 import Top from './top';
 import Plans from './plans';
 import Service from './service';
@@ -25,8 +26,11 @@ export default class InvestDetail extends React.Component {
             commentData: [],
             commentlNum: 0,
             loginState: false,
-            userSetInfo: ''
+            userSetInfo: '',
+            fixed: null,
+            dateDiff:0
         };
+        this.handleScroll = this.handleScroll.bind(this)
     }
     componentWillMount() {
         var match = this.props.match;
@@ -38,66 +42,90 @@ export default class InvestDetail extends React.Component {
     render() {
         const history = this.props.history;
         const dataSource = this.state.dataSource;
+
         return (
             <div className='detailContainer'>
-                <Header history={history} uri={this.state.loading ? null : Api.domain + dataSource.acinfo.plat.platlogo} />
+                <Header history={history} uri={this.state.loading ? null :  Api.domain + dataSource.acinfo.plat.platlogo} endtime={!this.state.loading && dataSource.acinfo.activity.isend === 1 && dataSource.acinfo.activity.status === 1 ?dataSource.acinfo.activity.endtime:null} dateDiff={this.state.dateDiff} />
+
                 {
                     this.state.loading ?
                         <Loading />
                         :
-                        <div className='detailBody'>
+                        <div className={dataSource.acinfo.activity.isrepeat == 0 ? 'firstDetailBody detailBody' : 'repeatDetailBody detailBody'}>
+                            {
+                                this.state.fixed ?
+                                    <div className={this.state.fixed == '出借方案' ? 'plans' : null}>
+                                        <Title title={this.state.fixed} isFixed={true} />
+                                    </div>
+                                    :
+                                    null
+                            }
                             <Top data={dataSource.acinfo} />
-                            <Plans data={dataSource} />
-                            <Service data={{ qqgroup: dataSource.qqgroup, qqgroup_num: dataSource.qqgroup_num, qqservice: dataSource.qqservice, qqgroup_url: dataSource.qqgroup_url }} />
-                            <Mianze />
+                            <div className='plans mt30' ref={'plans'}>
+                                <Title title={'出借方案'} />
+
+                                <Plans data={dataSource} that={this} />
+                                <div className='planFooter' ref={'planFooter'}></div>
+                            </div>
+
+                            <Service that={this} data={{ qqgroup: dataSource.qqgroup, qqgroup_num: dataSource.qqgroup_num, qqservice: dataSource.qqservice, qqgroup_url: dataSource.qqgroup_url }} />
+                            <Mianze that={this} />
                             {
                                 dataSource.acinfo.activity.iscomment == 0 ?
-                                    <div className='detailBox mt10'>
+                                    <div className='detailBox mt30'>
                                         <div className='ddView'>本活动仅做优惠信息推送，无需回复投资信息。</div>
                                     </div>
                                     :
                                     <div>
                                         {
                                             dataSource.acinfo.activity.img_att_h5 != null && dataSource.acinfo.activity.img_att_h5 != '' ?
-                                                <div className='detailBox mt10'>
-                                                    <div className='ddView'>
+                                                <div className='mt30'>
+                                                    <Title title={'特别事项'} />
+                                                    <div className='detailBox'>
                                                         <img src={Api.domain + dataSource.acinfo.activity.img_att_h5} />
                                                     </div>
                                                 </div>
                                                 :
                                                 null
                                         }
-                                        <ReplyNote data={dataSource.acinfo.activity} />
                                         {
                                             dataSource.acinfo.activity.comment_pich5 ?
                                                 <FindID uri={Api.domain + dataSource.acinfo.activity.comment_pich5} />
                                                 :
                                                 null
                                         }
+                                        <div className='mt30'>
+                                            <Title title={'返利回帖'} />
+                                            <ReplyNote data={dataSource.acinfo.activity} />
+                                        </div>
 
                                         {
                                             dataSource.acinfo.activity.status === 1 ?
-                                                <CommentForm data={dataSource} loginState={this.state.loginState} userSetInfo={this.state.userSetInfo} that={this} />
+                                                <CommentForm data={dataSource} loginState={this.state.loginState} userSetInfo={this.state.userSetInfo} that={this} history={this.props.history} />
                                                 :
                                                 null
                                         }
-                                        <div className='detailBox mt10'>
-                                            {
-                                                this.state.commentData.length ? this.state.commentData.map((item, i) => {
-                                                    return (
-                                                        <CommentItem data={item} key={i} commentlNum={this.state.commentlNum - i} loginState={this.state.loginState} commentField={dataSource.acinfo.activity.comment_field} />
-                                                    )
-                                                })
-                                                    :
-                                                    null
-                                            }
-                                            {
-                                                this.state.commentlNum >= 20 ?
-                                                    <Link className='moreComment' to={{ pathname: '/comments/' + this.state.activityid, state: { commentField: dataSource.acinfo.activity.comment_field, loginState: this.state.loginState } }}>查看更多评论</Link>
-                                                    :
-                                                    null
-                                            }
+                                        <div className='mt30' ref={'comments'}>
+                                            <Title title={'回帖记录'} />
+                                            <div className='detailBox'>
+                                                {
+                                                    this.state.commentData.length ? this.state.commentData.map((item, i) => {
+                                                        return (
+                                                            <CommentItem data={item} key={i} commentlNum={this.state.commentlNum - i} loginState={this.state.loginState} commentField={dataSource.acinfo.activity.comment_field} />
+                                                        )
+                                                    })
+                                                        :
+                                                        null
+                                                }
+                                                {
+                                                    this.state.commentlNum >= 20 ?
+                                                        <Link className='moreComment' to={{ pathname: '/comments/' + this.state.activityid, state: { commentField: dataSource.acinfo.activity.comment_field, loginState: this.state.loginState } }}>查看更多评论</Link>
+                                                        :
+                                                        null
+                                                }
+                                            </div>
                                         </div>
+
                                     </div>
                             }
                             {
@@ -115,6 +143,34 @@ export default class InvestDetail extends React.Component {
         this.getData();
         this.getCommentData();
         this.getUserSetInfo();
+        window.addEventListener('scroll', this.handleScroll)
+    }
+    handleScroll() {
+        var that = this;
+        if (this.refs.plans && this.refs.planFooter && this.refs.comments) {
+            var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+            var planTop = this.refs.plans.offsetTop - 81;
+            var planFooter = this.refs.planFooter.offsetTop - 81 - 60;
+            var commentsTop = this.refs.comments.offsetTop - 81
+            if (scrollTop >= planTop && scrollTop <= planFooter) {
+                that.setState({
+                    fixed: '出借方案'
+                })
+            }
+            else if (scrollTop > commentsTop) {
+                that.setState({
+                    fixed: '回帖记录'
+                })
+            }
+            else {
+                that.setState({
+                    fixed: null
+                })
+            }
+        }
+    }
+    componentWillUnmount() {
+        window.removeEventListener('scroll', this.handleScroll);
     }
     getData() {
         var that = this;
@@ -128,11 +184,20 @@ export default class InvestDetail extends React.Component {
             })
             .then(function (response) {
                 if (response.result == 1) {
+
+                    var date = new Date();
+                    var now = date.getTime();
+                    var datenowServer = new Date(parseInt(response.datenow.replace("/Date(", "").replace(")/", "")));
+                    var nowServer = datenowServer.getTime();
+                    var dateDiff = nowServer - now;
+
                     that.setState({
                         loading: false,
-                        dataSource: response.data
+                        dataSource: response.data,
+                        dateDiff:dateDiff
                     });
                 }
+  
             });
     }
     getCommentData() {
@@ -192,4 +257,5 @@ export default class InvestDetail extends React.Component {
         var acSiteUrl = siteUrlH5 ? siteUrlH5 : siteUrl;
         window.open(acSiteUrl);
     }
+
 }

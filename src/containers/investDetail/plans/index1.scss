@@ -1,32 +1,27 @@
 .plansList{
-    margin: 0;
     .red{
         color: red;
     }
-    dt{
-        background-color: #fff;
-        height: 0.8rem;
-        display: flex;
-        align-items: center;
-        border-bottom: 1px solid #e4e4e4;
-    }
     dt,dd{
         background-color: #fff;
+    }
+    dt{
+        padding: 0.3rem 0;
+        display: flex;
+        align-items: center;
     }
     .item{
         display: flex;
         flex-direction: row;
         span{
-            font-size: 0.24rem;
             color: #666;
-            line-height: 0.8rem;
         }
         .ic1{
-            padding-left: 0.2rem;
-            width: 0.7rem;
+            text-align: center;
+            width: 0.94rem;
         }
         .ic2{
-            width: 1.56rem;
+            width: 1.52rem;
         }
         .ic3{
             width: 1.76rem;
@@ -46,43 +41,79 @@
         margin: 0 0 0.2rem 0;
         background-color: #fff;
         .more{
+            position: relative;
+            margin-top: 0.3rem;
+            padding: 0.25rem 0 0.3rem 0;
             border-top: 1px solid #f2f2f2;
             width: 100%;
-            height: 0.92rem;
-            line-height: 0.92rem;
             text-align: center;
             color: #999;
-            font-size: 0.24rem;
             background-color:#fff;
+            &::after{
+                position: absolute;
+                left: 50%;
+                margin-left: -0.1rem;
+                bottom: 0;
+                content: '';
+                display: inline-block;
+                width: 0.2rem;
+                height: 0.04rem;
+                background-color: #c9c9c9;
+            }
+        }
+        .more.red{
+            &::after{
+                background-color: #e62344;
+            }
         }
         .content{
-            padding: 0 0.4rem 0.4rem 0.4rem;
+            border-top: 1px solid #f2f2f2;
+            padding: 0 0.25rem 0.4rem 0.25rem;
             .hd{
-                margin: 0 0 0.2rem 0;
-                height: 0.68rem;
-                line-height: 0.68rem;
-                text-align: center;
+                padding: 0.25rem 0;
+                margin: 0 0 0.25rem 0;
                 border-bottom: 1px solid #f2f2f2;
-                font-size: 0.28rem;
+                font-size: 0.24rem;
                 color: #666;
                 font-weight: normal;
-                .num{
+                display: flex;
+                .num{   
+                    display: inline-block;
+                    border-left: 1px solid #e4e4e4;
                     padding-left: 0.2rem;
+                    margin-left: 0.2rem;
                 }
             }
             .bd{
-                font-size: 0.24rem;
-                line-height: 0.48rem;
+                line-height: 0.36rem;
                 color: #666;
                 p{
                     padding: 0;
                     margin: 0;
                 }
+                .tt{
+                    margin-bottom: 0.15rem;
+                    position: relative;
+                   span{
+                       display: inline-block;
+                       width: 1rem;
+                       height: 0.3rem;
+                       text-align: center;
+                       line-height: 0.3rem;
+                       background-color: #e62344;
+                       border-radius: 0.06rem;
+                       color: #fff;
+                   }
+                   
+                }
             }
             ul{
+                border-bottom: 1px solid #f2f2f2;
                 list-style: none;
                 padding: 0;
                 margin: 0;
+                padding-bottom: 0.25rem;
+                margin-bottom: 0.25rem;
                 li{
                    display: flex;
                    label{

@@ -5,10 +5,10 @@ import 'moment/locale/zh-cn';
 import Util from '../../../../../../utils/util';
 
 const CustomChildren = props => (
-    <div className={'inputList inputListBt'}>
+    <li>
         <label className='labelText'>{props.children}</label>
         <span className='text' onClick={props.onClick}>{props.extra}</span>
-    </div>
+    </li>
 );
 
 

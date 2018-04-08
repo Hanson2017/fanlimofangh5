@@ -5,10 +5,10 @@ export default class InputList extends Component{
     render(){
         const {labelText,params,placeholder,isBorder} = this.props;
         return (
-            <div  className={isBorder ? 'inputList ' : 'inputList inputListBt'}>
+            <li>
                 <label className='labelText'>{labelText}</label>
                 <input  {...params} className='text' onChange={this.props.handleChange} />
-            </div>
+            </li>
         )
     }
 }

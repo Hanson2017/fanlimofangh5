@@ -2,11 +2,10 @@ import React, { Component } from 'react';
 import { ListView } from 'antd-mobile';
 import Api from '../../utils/api';
 import Loading from '../../components/loading';
-import TabBar from '../../components/tabBar';
 import Item from '../../components/item';
 import Loadmore from '../../components/loadmore';
 
-export default class FirstInvest extends React.Component {
+export default class ListInvest extends React.Component {
     constructor(props) {
         super(props);
         const dataSource = new ListView.DataSource({
@@ -21,41 +20,34 @@ export default class FirstInvest extends React.Component {
             totalNum: 0,
             isLoadMore: false,
             isLoadMoreOver: false,
+            dateDiff:0
         };
     }
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.type !== this.props.type) {
-            this.getData(1, nextProps.type)
-        }
-    }
     render() {
-        return (
-            <div>
-                {
-                    this.state.loading ?
-                        <Loading />
-                        :
-                        <ListView ref="lv"
-                            dataSource={this.state.dataSource}
-                            renderFooter={this.renderFooter.bind(this)}
-                            renderRow={this.renderRow}
-                            className="invest-list"
-                            pageSize={4}
-                            useBodyScroll
-                            scrollRenderAheadDistance={500}
-                            scrollEventThrottle={200}
-                            onEndReached={this.onEndReached.bind(this)}
-                            onEndReachedThreshold={10}
-                        />
+        if (this.state.loading) {
+            return <Loading />;
+        }
+        else {
+            return (
+                <ListView ref="lv"
+                    dataSource={this.state.dataSource}
+                    renderFooter={this.renderFooter.bind(this)}
+                    renderRow={this.renderRow.bind(this)}
+                    className="invest-list"
+                    pageSize={4}
+                    useBodyScroll
+                    scrollRenderAheadDistance={500}
+                    scrollEventThrottle={200}
+                    onEndReached={this.onEndReached.bind(this)}
+                    onEndReachedThreshold={10}
+                />
+            )
+        }
 
-                }
-
-            </div>
-        )
     }
     renderRow(rowData, sectionID, rowID) {
         return (
-            <Item data={rowData} />
+            <Item data={rowData} dateDiff={this.state.dateDiff} />
         )
     }
     renderFooter() {
@@ -65,16 +57,16 @@ export default class FirstInvest extends React.Component {
     }
     onEndReached() {
         if (this.state.totalNum > this.state.pageSize) {
-            this.getData(2, this.props.type)
+            this.getData(2)
         }
     }
     componentDidMount() {
-        this.getData(1, this.props.type)
+        this.getData(1)
     }
-    getData(type, tabType) {
+    getData(type) {
         const that = this;
         const pageCount = this.state.pageCount;
-
+        const tabType=this.props.type;
         if (type == 1) {
             this.page = 1;
             this.setState({
@@ -102,7 +94,7 @@ export default class FirstInvest extends React.Component {
         if (this.props.tType && this.props.tType == 'listTag') {
             url = Api.listTag + '?type=' + tabType + '&page=' + this.page + '&pagesize=' + this.state.pageSize;
         }
-        else{
+        else {
             url = Api.list + '?type=' + tabType + '&page=' + this.page + '&pagesize=' + this.state.pageSize;
         }
 
@@ -115,15 +107,24 @@ export default class FirstInvest extends React.Component {
             })
             .then(function (response) {
                 if (response.result == 1) {
+
+                    var date = new Date();
+                    var now = date.getTime();
+                    var datenowServer = new Date(parseInt(response.datenow.replace("/Date(", "").replace(")/", "")));
+                    var nowServer = datenowServer.getTime();
+                    var dateDiff = nowServer - now;
+
                     let dataSource = that.state.dataSource2;
                     dataSource = dataSource.concat(response.data);
+       
                     that.setState({
                         loading: false,
                         isLoadMore: false,
                         dataSource: that.state.dataSource.cloneWithRows(dataSource),
                         dataSource2: dataSource,
                         pageCount: response.pageCount,
-                        totalNum: response.totalNum
+                        totalNum: response.totalNum,
+                        dateDiff:dateDiff
                     })
                 }
             });

@@ -4,10 +4,10 @@ import { ListView, Modal, Toast } from 'antd-mobile';
 import Api from '../../../../utils/api';
 import Util from '../../../../utils/util';
 import Loading from '../../../../components/loading';
+import Tabs from '../../../../components/tabs';
 import NavBar from '../../../../components/navBar';
 import Loadmore from '../../../../components/loadmore';
 import './index1.scss';
-
 
 class Item extends Component {
     render() {
@@ -15,40 +15,46 @@ class Item extends Component {
         const comment_field = data.activity.comment_field;
         return (
             <dd>
-                <div className='item hd'>
-                    <span className='ic1 c666'>{data.plat.platname}</span>
-                    <span className='ic2 c666'>
-                        {data.activity.isrepeat === 0 ?
-                            '首次出借'
-                            :
-                            '多次出借'
-                        }
-                    </span>
-                    <span className={data.comment.status === 0 ? 'ic3' : data.comment.status === 1 ? 'ic4 darkgreen' : 'ic4 red'}>
-                        {
-                            data.comment.status === 0 ?
-                                '待审核'
+                <div className='hd'>
+                    <div className='platName'>
+                        <Link to={'/Activity/Detail/'+data.activity.id} className='name'>{data.plat.platname}</Link>
+                        <span className={data.activity.isrepeat === 0 ?'type':'type repeat'}>
+                            {data.activity.isrepeat === 0 ?
+                                '首次出借'
                                 :
-
-                                data.comment.status === 1 ?
-                                    '已通过' + '（' + data.comment.paymoney + '元' + '）'
+                                '多次出借'
+                            }
+                        </span>
+                    </div>
+                    <div className={data.comment.status === 0 ? 'state' : 'state state2'}>
+                        <span>状态&nbsp;|&nbsp;</span>
+                        <span className={data.comment.status === 0 ? 'dsh' : data.comment.status === 1 ? 'tg' : 'bh'}>
+                            {
+                                data.comment.status === 0 ?
+                                    '待审核'
                                     :
-                                    '已驳回' + '（' + data.comment.checkinfo + '）'
 
-                        }
-                    </span>
+                                    data.comment.status === 1 ?
+                                        '已通过' + '（' + data.comment.paymoney + '元' + '）'
+                                        :
+                                        '已驳回' + '（' + data.comment.checkinfo + '）'
+
+                            }
+                        </span>
+                    </div>
+
                     {
                         data.comment.status === 0 ?
-                            <span className='ic4'>
+                            <div className='action'>
                                 <Link to={{ pathname: '/member/active/edit', state: { id: data.comment.id, comment_field: data.activity.comment_field } }} className='link'>编辑</Link>
                                 <a className='link del' onClick={(e) => {
                                     e.preventDefault();
-                                    Modal.alert('删除', '确定删除本条回帖信息么?', [
+                                    Modal.alert('', '确定删除本条回帖信息么?', [
                                         { text: '取消', onPress: () => console.log('cancel') },
                                         { text: '确定', onPress: () => { that.delComment(data.comment.id) } },
                                     ])
                                 }}>删除</a>
-                            </span>
+                            </div>
                             :
                             null
                     }
@@ -58,7 +64,7 @@ class Item extends Component {
                 <ul className='bd'>
                     {
                         comment_field.indexOf('c_userid') >= 0 ?
-                            <li>
+                            <li className='w100'>
                                 <label>注册ID</label>
                                 {data.comment.c_userid}
                             </li>
@@ -67,13 +73,17 @@ class Item extends Component {
                     }
                     {
                         comment_field.indexOf('c_phone') >= 0 ?
-                            <li>
+                            <li className='w100'>
                                 <label>注册手机号</label>
                                 {data.comment.c_phone}
                             </li>
                             :
                             null
                     }
+                    <li className='w100'>
+                        <label>支付宝账号</label>
+                        {data.comment.alipayid}
+                    </li>
                     {
                         comment_field.indexOf('c_username') >= 0 ?
                             <li>
@@ -96,10 +106,7 @@ class Item extends Component {
                             :
                             null
                     }
-                    <li>
-                        <label>支付宝账号</label>
-                        {data.comment.alipayid}
-                    </li>
+
 
                     {
                         data.comment.status !== 0 ?
@@ -136,7 +143,7 @@ class Item extends Component {
                     data.comment.status !== 0 ?
                         null
                         :
-                        <p className='note'>
+                        <div className='note'>
                             备注：
                             {data.plan.repaydayelse != null && data.plan.repaydayelse != '' ?
 
@@ -151,7 +158,7 @@ class Item extends Component {
                                         :
                                         '自' + Util.formatDate(data.comment.addtime) + '起' + data.plan.repayday + '个自然日内，审核状态可能为“待审核”，请耐心等待'
                             }
-                        </p>
+                        </div>
                 }
 
             </dd>
@@ -159,7 +166,7 @@ class Item extends Component {
     }
 }
 
-export default class ActiveList extends Component {
+class List extends Component {
     constructor(props) {
         super(props);
         const dataSource = new ListView.DataSource({
@@ -170,7 +177,7 @@ export default class ActiveList extends Component {
             dataSource: dataSource.cloneWithRows({}),
             dataSource2: [],
             pageCount: 1,
-            pageSize: 20,
+            pageSize: 100,
             totalNum: 0,
             isLoadMore: false,
             isLoadMoreOver: false,
@@ -178,21 +185,15 @@ export default class ActiveList extends Component {
         };
     }
     render() {
-        return (
-            <div className='container'>
-                <NavBar title={'活动记录'} history={this.props.history} />
-                {
-                    this.state.loading ?
-                        <Loading />
-                        :
-                        <div className='memberActiveList'>
+        if (this.state.loading) {
+            return <Loading />
+        }
+        else {
+            return (
+                <div className='memberActiveList'>
+                    {
+                        this.state.dataSource2.length > 0 ?
                             <dl>
-                                <dt className='item'>
-                                    <span className='ic1'>活动平台</span>
-                                    <span className='ic2'>类型</span>
-                                    <span className='ic3'>状态</span>
-                                    <span className='ic4'>操作</span>
-                                </dt>
                                 <ListView ref="lv"
                                     dataSource={this.state.dataSource}
                                     renderFooter={this.renderFooter.bind(this)}
@@ -206,11 +207,13 @@ export default class ActiveList extends Component {
                                     onEndReachedThreshold={10}
                                 />
                             </dl>
-                        </div>
-                }
+                            :
+                            <span className='null'>暂无活动记录</span>
+                    }
 
-            </div>
-        )
+                </div>
+            )
+        }
     }
     renderRow(rowData, sectionID, rowID) {
         return (
@@ -233,7 +236,7 @@ export default class ActiveList extends Component {
     getData(type) {
         const that = this;
         const pageCount = this.state.pageCount;
-
+        const tab = this.props.type;
         if (type == 1) {
             this.page = 1;
             this.setState({
@@ -258,7 +261,7 @@ export default class ActiveList extends Component {
         }
         const loginState = JSON.parse(localStorage.loginState);
         const memberId = loginState.r_id;
-        const url = Api.getmemberlist + '?memberid=' + memberId + '&page=' + this.page + '&pagesize=' + this.state.pageSize;
+        const url = Api.getmemberlist + '?memberid=' + memberId + '&page=' + this.page + '&pagesize=' + this.state.pageSize + '&type=' + tab;
 
         fetch(url)
             .then(function (response) {
@@ -308,4 +311,48 @@ export default class ActiveList extends Component {
             });
 
     }
+}
+
+const tabNames = [
+    { title: '全部', type: -1 },
+    { title: '待审核', type: 0 },
+    { title: '已通过', type: 1 },
+    { title: '已驳回', type: 2 }
+]
+
+export default class ActiveList extends Component {
+    constructor() {
+        super()
+        this.state = {
+            fixed: false
+        }
+        this.handleScroll = this.handleScroll.bind(this);
+    }
+    render() {
+        return (
+            <div className='tabContainer'>
+                <NavBar title={'活动记录'} history={this.props.history} />
+                <Tabs fixed={this.state.fixed}>
+                    {
+                        tabNames.map((tab, i) => {
+                            return (
+                                <List key={i} name={tab.title} type={tab.type} />
+                            )
+                        })
+                    }
+
+                </Tabs>
+            </div>
+        )
+    }
+    componentDidMount() {
+        window.addEventListener('scroll', this.handleScroll)
+    }
+    handleScroll() {
+        Util.handleScroll(this)
+    }
+    componentWillUnmount() {
+        window.removeEventListener('scroll', this.handleScroll);
+    }
+
 }
