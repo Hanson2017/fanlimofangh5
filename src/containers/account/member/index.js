@@ -52,7 +52,7 @@ export default class Member extends React.Component {
 
                     </div>
                     <div className='mt30'>
-                        <NavList routerPath={"mqqwpa://im/chat?chat_type=wpa&uin=" + '3003609031' + "&version=1&src_type=web&web_src=fanllimofang.com"} labelText={'联系客服'} iconName={'qq'} params={{target:'_blank'}}  />
+                        <NavList routerPath={'/member/kefu'} labelText={'联系客服'} iconName={'qq'}  />
                     </div>
                     <button className="logoutBtn" onClick={this.logout.bind(this)}>退出登录</button>
                 </div>

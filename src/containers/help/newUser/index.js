@@ -47,10 +47,11 @@ export default class newUser extends React.Component {
                             <p>先说2个关键点：</p>
                             <p>① 首投活动<span className='red'>必须从直达链接跳转到平台进行注册，必须！ </span><strong>（复投不需要）</strong>；</p>
                             <p>② 严格按照页面里描述的投资规则进行投资，完事了记得在页面下方回帖，留下正确信息以及支付宝帐号，这样才能拿到返利。</p>
-
+                            <p className='mt10'><img src={require('../../../assets/images/newser/pp.png')} /></p>
                             <div className='bdr'>
-                                <p>下面以投哪网活动为例来讲解具体操作过程。</p>
+                                <p>下面以理财范活动为例来讲解具体操作过程。</p>
                             </div>
+                           
                         </div>
 
                     </div>
@@ -59,7 +60,8 @@ export default class newUser extends React.Component {
                     <div className='content'>
 
                         <h5 className='h5'>一、首先从返利魔方APP首页或项目列表页找到你感兴趣的活动，如下图所示：</h5>
-                        <p><img src={Api.domain + '/images/app/p1.png?20170424'} className='img' /></p>
+         
+                        <p className='mt10'><img src={require('../../../assets/images/newser/p1.png')} /></p>
                         <p>（在上图你可以看到该平台的风控评分和风险等级等信息。）</p>
 
                     </div>
@@ -69,11 +71,11 @@ export default class newUser extends React.Component {
 
                         <h5 className='h5'>二、如果你对该活动有兴趣，</h5>
                         <h6 className='h6'>A、点击进入详情页面进行查看，如下图所示：</h6>
-                        <p><img src={Api.domain + '/images/app/p2.png?20170424'} className='img' /></p>
+                        <p className='mt10'><img src={require('../../../assets/images/newser/p2a.png')} /></p>
                         <p>在上图中我们可以了解到关于活动的大体情况描述:</p>
 
 
-                        <div className='more' onClick={() => {
+                        <div className={ this.state.isHidden[0]?'more':'more open'} onClick={() => {
                             this.state.isHidden[0] = !this.state.isHidden[0];
                             this.setState({
                                 ref: !this.state.ref
@@ -90,15 +92,15 @@ export default class newUser extends React.Component {
                                     <p><b>4代表</b> 需要充值多少；（可以充值更多，也可以分次充值，但不能少于方案要求的金额。）</p>
                                     <p><b>5代表</b> 返利魔方给多少返利；（<span className='red'>这里就是通过魔方投资可以多得到的钱了</span>）</p>
                                     <p><b>6代表</b> 总收益是多少；</p>
-                                    <p><b>7代表</b> 页面最下面是“直达链接”，需要点击“直达链接”到平台去注册才行哦。</p>
+                                    <p><b>7代表</b> 查看此方案更多详细资料</p>
                                 </div>
                         }
                         <div className='bdr'>
                             <h6 className='h6'>B、点击某个方案下面的“点击查看详情”按钮，可以很清楚得看到投资方案的信息。</h6>
                             <p>如下图所示：</p>
-                            <p className='mt10'><img src={Api.domain + '/images/app/p3.png?20170424'} className='img' /></p>
+                            <p className='mt10'><img src={require('../../../assets/images/newser/p2b.png')} /></p>
 
-                            <div className='more' onClick={() => {
+                            <div className={ this.state.isHidden[1]?'more':'more open'} onClick={() => {
                                 this.state.isHidden[1] = !this.state.isHidden[1];
                                 this.setState({
                                     ref: !this.state.ref
@@ -120,6 +122,7 @@ export default class newUser extends React.Component {
                                                 五是投资明细和收益明细是怎么样的；
                         六是返利魔方的返现周期是怎么样的。）</p>
                                         <p><b>5代表</b> 特别说明，这里是对该活动一些特别需要注意的地方进行描述，请仔细阅读。</p>
+                                        <p><b>6代表</b> 页面最下面是“直达链接”，需要点击“直达链接”到平台去注册才行哦。</p>
                                     </div>
                             }
                         </div>
@@ -128,7 +131,7 @@ export default class newUser extends React.Component {
                 <div className='box mt20'>
                     <div className='content'>
                         <h5 className='h5'>三 、投资完记得在活动页面回帖</h5>
-                        <p className='mt10'><img src={Api.domain + '/images/app/p4.png?20170424'} className='img' /></p>
+                        <p className='mt10'><img src={require('../../../assets/images/newser/p3.png')} /></p>
                         <p>如上图所示，投资完记得在页面下面跟帖留下投资相关信息，包括你的支付宝帐号。</p>
                         <p>必须有支付宝帐号，返利魔方工作人员才能把返利支付给你）</p>
                         <p>建议回帖前先用QQ一键登录 或者 微信一键登录功能登录返利魔方，这样后续可以在个人中心里查看返利进度。</p>

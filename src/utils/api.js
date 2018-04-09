@@ -28,5 +28,6 @@ module.exports = {
     getUserinfo: domain + '/member/Login/QQlogin_h5', //QQ,wechat 登录
     getInfoList: host + 'GetInfoList', //常用问答
     searchJson: host + 'Searchjson', //搜索简易列表
-    searchActivity: host + 'SearchActivity' //搜索详细列表
+    searchActivity: host + 'SearchActivity', //搜索详细列表
+    getqqinfo: host + 'Getqqinfo' //单独获取QQ客服信息
 }

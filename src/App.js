@@ -19,7 +19,7 @@ import MemberActiveList from './containers/account/member/activeList';
 import MemberActiveListEdit from './containers/account/member/activeList/edit';
 import MemberSet from './containers/account/member/set';
 import MemberChangepwd from './containers/account/member/changepwd';
-
+import MemberKefu from './containers/account/member/kefu';
 
 const App = () => (
   <Router>
@@ -40,6 +40,7 @@ const App = () => (
       <PrivateRoute  exact path="/member/active" component={MemberActiveList} />
       <PrivateRoute  path="/member/active/edit" component={MemberActiveListEdit} />
       <PrivateRoute  path="/member/set" component={MemberSet} />
+      <PrivateRoute  path="/member/kefu" component={MemberKefu} />
 
     </Switch>
   </Router >
