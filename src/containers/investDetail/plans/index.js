@@ -121,7 +121,13 @@ export default class Plans extends React.Component {
                                                     <div>
                                                         <p className='tt'><span>出借流程</span></p>
                                                         <p>
-                                                            1、通过<a className='red' target="_blank" href={this.state.siteUrl}>直达链接</a>
+                                                            1、通过
+                                                            {
+                                                                acinfo.activity.status==1?
+                                                                <a className='red' target="_blank" href={this.state.siteUrl}>直达链接</a>
+                                                                :
+                                                                <span className='red'>直达链接</span>
+                                                            }
                                                             {
                                                                 acinfo.activity.invitation_code != '' ?
                                                                     <span>
