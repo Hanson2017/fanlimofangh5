@@ -20,7 +20,7 @@ export default class Kefu extends React.Component {
                 <div className='memberKefuText'>
                     <p>
                         HI！欢迎来到返利魔方！<br/>
-                    由于在线客服访问人数较多，为节省您的宝贵时间，可以先查看自助问答。如仍未解决，请再联系在线客服，我们将尽心解决您的问题！
+                        由于在线客服访问人数较多，为节约您的宝贵时间，可先行查阅自助问答。如仍有疑问，请联系在线客服，我们将尽心解决您的问题！
                     </p>
                     <Link to={{
                         pathname: '/help',

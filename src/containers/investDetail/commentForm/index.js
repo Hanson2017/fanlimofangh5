@@ -28,6 +28,8 @@ export default class CommentsForm extends React.Component {
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleSubmitNolog = this.handleSubmitNolog.bind(this);
+        
     }
     componentWillMount() {
         this.setState({
@@ -106,12 +108,11 @@ export default class CommentsForm extends React.Component {
                 </ul>
                 <div className='commentsSubmit'>
                     {
-                        this.state.loginState ?
-                            <button type='submit' disabled={this.state.disabled ? false : true} className={this.state.disabled ? 'submit' : 'submit disabled'} onClick={this.handleSubmit}>
-                                {this.state.disabled ? '提交回帖' : '正在提交...'}
-                            </button>
-                            :
-                            <button type="submit" className='submit disabled' disabled={true} >提交(未登录)</button>
+
+                        <button type='submit' disabled={this.state.disabled ? false : true} className={this.state.disabled ? 'submit' : 'submit disabled'} onClick={this.state.loginState ? this.handleSubmit : this.handleSubmitNolog}>
+                            {this.state.disabled ? '提交回帖' : '正在提交...'}
+                        </button>
+
                     }
 
                 </div>
@@ -125,6 +126,14 @@ export default class CommentsForm extends React.Component {
         this.setState({
             [name]: value
         });
+    }
+    handleSubmitNolog() {
+        var { history } = this.props;
+        Modal.alert('温馨提示', '请登录后回帖！', [
+            { text: '稍后', onPress: () => console.log('cancel') },
+            { text: '前往', onPress: () => { history.push('/member') } },
+        ])
+
     }
     handleSubmit() {
         var { history } = this.props;

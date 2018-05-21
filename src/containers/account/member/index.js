@@ -24,20 +24,30 @@ export default class Member extends React.Component {
     render() {
         var loginState = JSON.parse(localStorage.loginState);
         var time = Date.parse(new Date());
-        var lasttime = Date.parse(Util.formatDate(loginState.r_regtime));
-        var day = parseInt((time - lasttime) / (1000 * 60 * 60 * 24));
+        var day = null;
+        if(loginState.r_regtime){
+            var lasttime = Date.parse(Util.formatDate(loginState.r_regtime));
+            day = parseInt((time - lasttime) / (1000 * 60 * 60 * 24));
+        }
+      
         return (
             <div className='memberContainer' style={{ height: height }}>
                 <div className='content'>
                     <div className="hd">
                         {
-                            loginState.r_avatar !== null && loginState.r_avatar !== '' ?
+                            loginState.r_avatar && loginState.r_avatar !== null && loginState.r_avatar !== '' ?
                                 <p><img src={loginState.r_avatar} className='portrait' /></p>
                                 :
                                 <p><img src={require('../../../assets/images/portrait.png')} className='portrait' /></p>
                         }
                         <p className='userName'>{loginState.r_username}</p>
-                        <span className='date'>玩转魔方 {day} 天</span>
+                        {
+                            day !== null?
+                            <span className='date'>玩转魔方 {day} 天</span>
+                            :
+                            null
+                        }
+                       
                     </div>
                     <div className='bd'>
                         <NavList routerPath={'/member/active'} labelText={'活动记录'} iconName={'list'} />

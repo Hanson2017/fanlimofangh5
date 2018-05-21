@@ -46,13 +46,11 @@ export default class Home extends React.Component {
                         <div className='logo'>
                             <img src={require('../../assets/images/logo2.png')} />
                         </div>
-                        <div className='r'>
-                            <SearchBar history={history} />
-                            <Marquee data={this.state.noticeList} />
-                        </div>
+                        <SearchBar history={history} />
                     </div>
+                    <Marquee data={this.state.noticeList} />
                     <div className='banner'>
-                        <img src={require('../../assets/images/banner.jpg')} alt="" />
+                        <img src={require('../../assets/images/banner.png')} alt="" />
                     </div>
                     <NavList history={history} />
                     <GroupNew title={'近期热门活动'} data={this.state.dataSourceHot} />
@@ -76,8 +74,8 @@ export default class Home extends React.Component {
         var that = this;
         if (this.refs.groupFrist && this.refs.groupRepeat) {
             var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
-            var groupFrist = this.refs.groupFrist.offsetTop - 116;
-            var groupRepeat = this.refs.groupRepeat.offsetTop - 116
+            var groupFrist = this.refs.groupFrist.offsetTop - 90;
+            var groupRepeat = this.refs.groupRepeat.offsetTop - 90
             if (scrollTop >= groupFrist && scrollTop <= groupRepeat) {
                 that.setState({
                     fixed: '首次出借活动'

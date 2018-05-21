@@ -17,7 +17,7 @@ class MainTabBar extends React.Component {
         return (
             <TabBar
                 unselectedTintColor="#888"
-                tintColor="#FF6666"
+                tintColor="#E62344"
                 barTintColor="white"
             >
                 <TabBar.Item
@@ -76,12 +76,12 @@ class MainTabBar extends React.Component {
                     selectedIcon={<Icon type={require('../../assets/icons/appDown.svg')} />}
                     selected={pathname === '/appdown'}
                     onPress={() => {
-                        alertShow('提示', '前往下载APP，更好的体验', [{
+                        alertShow('提示', '下载官方APP，享受更好的体验！', [{
                             text: '取消', onPress: function onPress() {
                                 return console.log('cancel');
                             }
                         }, {
-                            text: '确认', onPress: function onPress() {
+                            text: '前往', onPress: function onPress() {
                                 window.open('http://a.app.qq.com/o/simple.jsp?pkgname=org.zywx.wbpalmstar.widgetone.uex11575732');
                             }
                         }]);

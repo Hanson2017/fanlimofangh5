@@ -30,7 +30,7 @@ export default class ReplyNote extends React.Component {
             <div className='detailBox'>                
                 <div className='ddView'>
                     回帖说明：<br />
-                   {postinfo}
+                    为了您能顺利获取返利，请务必填写完整以下信息。
                 </div>
             </div>
         )
